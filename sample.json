@@ -1,0 +1,12 @@
+{
+  "name": "金庸",
+  "foreign-language name": "Louis Cha",
+  "nationality": "中国",
+  "nation": "汉族",
+  "birthplace": [
+    { "province": "浙江" },
+    { "city": "海宁" }
+  ],
+  "profession": [ "作家", "政论家", "社会活动家" ],
+  "works": [ "射雕英雄传", "天龙八部", "倚天屠龙记" ]
+}
