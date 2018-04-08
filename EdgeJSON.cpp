@@ -346,14 +346,7 @@ string EdgeJSON::TraversalPrint(Node *n)		//对节点分类进行处理
 			(now_ptr->node_type == EdgeJSON_string) || (now_ptr->node_type == EdgeJSON_bool) ||
 			now_ptr->node_type == EdgeJSON_null)		//打印数值
 		{
-			if (now_ptr->key != "")		//打印有键名称的数值并进字符串
-			{
-				temp += PrintKeyvalue(now_ptr);
-			}
-			else
-			{									//打印无键名称的数值并进字符串
-				temp += PrintValue(now_ptr);
-			}
+			temp += PrintKeyvalue(now_ptr);
 		}
 		if (now_ptr->brother != nullptr)		//当前节点若有兄弟节点则将兄弟节点指针赋予当前节点
 		{
@@ -415,10 +408,13 @@ string EdgeJSON::PrintArray(Node *now_ptr)
 string EdgeJSON::PrintKeyvalue(Node *now_ptr)
 {
 	string temp;			//将键名称并进字符串
-	temp += "\"";
-	temp += now_ptr->key;
-	temp += "\"";
-	temp += ":";
+	if (now_ptr->key != "")
+	{
+		temp += "\"";
+		temp += now_ptr->key;
+		temp += "\"";
+		temp += ":";
+	}
 	ostringstream os;
 	switch (now_ptr->node_type)		//根据节点的值类型取出相应值并进字符串
 	{
@@ -449,41 +445,6 @@ string EdgeJSON::PrintKeyvalue(Node *now_ptr)
 		break;
 	}
 	return temp;			//返回字符串
-}
-
-string EdgeJSON::PrintValue(Node *now_ptr)
-{
-	string temp;			//算法与处理有键名称的值的算法类似
-	ostringstream os;
-	switch (now_ptr->node_type)
-	{
-	case EdgeJSON_int:
-		temp += to_string(now_ptr->value_int);
-		break;
-	case EdgeJSON_double:
-		os << now_ptr->value_dou;
-		temp += os.str();
-		break;
-	case EdgeJSON_string:
-		temp += "\"";
-		temp += now_ptr->value_str;
-		temp += "\"";
-		break;
-	case EdgeJSON_bool:
-		if (now_ptr->value_boo == true)
-		{
-			temp += "true";
-		}
-		else
-		{
-			temp += "false";
-		}
-		break;
-	case EdgeJSON_null:
-		temp += "null";
-		break;
-	}
-	return temp;
 }
 
 bool EdgeJSON::TraversalDelete(Node *nownode_ptr)
@@ -698,9 +659,10 @@ void EdgeJSON::Lexing(vector<token*>&tokenarray, string &words)
 			{													//无冒号,j+1则是判断首字符
 				for (k; k < tokenarray[i]->token_str.size(); k++)	//有冒号,k=j+2是从冒号后第二个字符开始检测
 				{													//无冒号,k=1是从首字符的下一个字符开始检测
-					if (tokenarray[i]->token_str[k] == '.')		
+					if ((tokenarray[i]->token_str[k] == '.')|| (tokenarray[i]->token_str[k] == 'e') 
+						|| (tokenarray[i]->token_str[k] == 'E'))
 					{
-						tokenarray[i]->token_type = EdgeJSON_double;		//有小数点是double
+						tokenarray[i]->token_type = EdgeJSON_double;		//有小数点或者指数符号的是double
 					}
 				}
 				if (tokenarray[i]->token_type == EdgeJSON_void)
@@ -756,6 +718,7 @@ Node * EdgeJSON::ParseInt(string token_str)
 {
 	Node *return_ptr = new Node;
 	string temp;		//临时存放字符
+	int e_flag = 0;
 	return_ptr->node_type = EdgeJSON_int;
 	if (token_str[0] == '\"')		//词素首字符是引号则提取键名称
 	{

@@ -122,8 +122,7 @@ private:
 	string TraversalPrint(Node *);		//遍历类树结构的每个节点以便生成输出字符串
 	string PrintObject(Node *);			//打印对象
 	string PrintArray(Node *);			//打印数组
-	string PrintKeyvalue(Node *);		//打印有键名称的数值
-	string PrintValue(Node *);			//打印无键名称的数值
+	string PrintKeyvalue(Node *);		//打印有键值
 
 	bool TraversalDelete(Node *);		//遍历json结构进行删除
 
