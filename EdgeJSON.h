@@ -1,25 +1,25 @@
 /*
-EdgeJSON-Ğí¿ÉĞ­Òé
+EdgeJSON-è®¸å¯åè®®
 Copyright (c) 2018 Jiaminwei
 
-1.ĞòÑÔ:±¾Ğ­ÒéÓÃÓÚ¹ÜÏ½ÓÃ»§¼°ÉÌÒµÊµÌå (ÒÔÏÂ¼ò³Æ£º±»Ğí¿ÉÈË) ºÍÈí¼şÔ­×÷Õß£¨ÒÔÏÂ¼ò³Æ£ºĞí¿É·½£©Ö®¼ä
-  µÄ¹ØÏµ¡£Ê¹ÓÃ±¾Èí¼ş£¨°üÀ¨µ«²»ÏŞÓÚ¸´ÖÆ¡¢ÏÂÔØ¡¢°²×°¡¢ÔËĞĞ±¾Èí¼ş£©¼´ÊÓÎªÍ¬Òâ±¾Ğ­Òé¡£±¾Ğ­Òé¹æ¶¨ÁË
-  Ê¹ÓÃĞí¿É·½´´½¨ºÍÓµÓĞµÄEdgeJSON (ÒÔÏÂ¼ò³Æ±¾Èí¼ş) µÄÌõ¿î¡¢È¨Àû¡¢ÏŞÖÆºÍÒåÎñ£¬ÏêÇéÈçÏÂ:
-2.Ğí¿ÉÖ¤ÊÚÓè:Ğí¿É·½ÌØ´ËÊÚÓè±»Ğí¿ÉÈË¸öÈË¸´ÖÆ¡¢·Ö·¢¡¢ĞŞ¸ÄÒÔ¼°·ÇÉÌÒµĞÔÊ¹ÓÃ±¾Èí¼şµÄÈ¨Àû(ÉÌÒµÊ¹ÓÃÇë
-  ÁªÏµÈí¼şÔ­×÷Õß)¡£
-3.±»Ğí¿ÉÈËÒåÎñ£º
-	3.1.ÔÚÑÓÉìµÄ´úÂëÖĞ£¨ĞŞ¸ÄºÍÓÉ±¾Èí¼şµÄÔ´´úÂëÑÜÉúµÄ´úÂëÖĞ£©±ØĞë°üº¬Ô­´úÂëÖĞµÄĞ­ÒéÓëÉùÃ÷¡£
-	3.2.Èô±»Ğí¿ÉÈËĞŞ¸ÄÁË´úÂë£¬Ôò±ØĞëÔÚ±»ĞŞ¸ÄµÄÎÄ¼şÖĞ×÷³öÏàÓ¦ËµÃ÷¡£
-4.ÊÜÏŞ:½ûÖ¹±»Ğí¿ÉÈËÒÔÉÌÒµ»òÓ¯ÀûÎªÄ¿µÄÊ¹ÓÃ±¾Èí¼ş»òÆäÑÜÉú×÷Æ·£¨°üÀ¨µ«²»ÏŞÓÚĞŞ¸Ä±¾Èí¼ş¡¢ÒÔ±¾Èí¼şÎª
-  »ù´¡½øĞĞ¶ş´Î¿ª·¢¡¢µ÷ÓÃ±¾Èí¼şËù¶¨ÒåµÄ½Ó¿ÚµÈ£©¡£
-5.ÖÕÖ¹:
-	5.1.Èô±»Ğí¿ÉÈËÓĞÎ¥±¾Ğ­ÒéÈÎÒ»Ìõ¿î¼´×Ô¶¯ÖÕÖ¹Ğí¿É¡£
-	5.2.Ğí¿É·½ÓĞÈ¨ÖÕÖ¹±¾Ğ­Òé¼°¶Ô±»Ğí¿ÉÈËµÄĞí¿É¡£
-6.ÃâÔğÌõ¿î:ÔÚ·¨ÂÉÔÊĞíµÄ·¶Î§ÄÚ£¬Èí¼şÊÇ¸ù¾İÔ­ÑùÌá¹©µÄ¡£Ğí¿É·½²»Ó¦¶ÔÒò±¾Èí¼şµÄ²Ù×÷¡¢¹ÊÕÏ¡¢bug»ò±¾Èí
-  ¼şÓë±»Ğí¿É·½µÄ×îÖÕÉè±¸Ö®¼äµÄÈÎºÎÆäËû½»»¥¶øÕĞÖÂµÄÈÎºÎËğº¦¡¢·ÑÓÃ¡¢ÈÎºÎÆäËû¸¶¿î³Ğµ£ÔğÈÎ£¬´ËÍâ£¬ÔÚ
-  ÒÀÀµ±¾Èí¼ş»òÊ¹ÓÃ±¾Èí¼şµÄÔ´´úÂëÊ±£¬ Ğí¿É·½²»Ó¦¶Ô±»Ğí¿É·½±àĞ´µÄÔ´´úÂëÖĞµÄÈÎºÎÈ±Ïİ¸ºÔğ¡£
-7.±£ÁôÈ¨Àû£ºĞí¿É·½ÓĞÈ¨ĞŞ¸Ä±¾Ğ­ÒéÌõ¿î£¨Èô±»Ğí¿ÉÈË²»ÈÏÍ¬ĞŞ¸ÄºóµÄĞ­ÒéÌõ¿î£¬¿ÉÍ£Ö¹Ê¹ÓÃ±¾Èí¼ş£¬¼ÌĞøÊ¹
-  ÓÃ¼´´ú±íÍ¬ÒâĞŞ¸ÄºóµÄĞ­ÒéÌõ¿î£©£¬²¢¶Ô±¾Ğ­ÒéÎ´¾¡ÊÂÒË±£ÁôËùÓĞÈ¨Àû¡£
+1.åºè¨€:æœ¬åè®®ç”¨äºç®¡è¾–ç”¨æˆ·åŠå•†ä¸šå®ä½“ (ä»¥ä¸‹ç®€ç§°ï¼šè¢«è®¸å¯äºº) å’Œè½¯ä»¶åŸä½œè€…ï¼ˆä»¥ä¸‹ç®€ç§°ï¼šè®¸å¯æ–¹ï¼‰ä¹‹é—´
+  çš„å…³ç³»ã€‚ä½¿ç”¨æœ¬è½¯ä»¶ï¼ˆåŒ…æ‹¬ä½†ä¸é™äºå¤åˆ¶ã€ä¸‹è½½ã€å®‰è£…ã€è¿è¡Œæœ¬è½¯ä»¶ï¼‰å³è§†ä¸ºåŒæ„æœ¬åè®®ã€‚æœ¬åè®®è§„å®šäº†
+  ä½¿ç”¨è®¸å¯æ–¹åˆ›å»ºå’Œæ‹¥æœ‰çš„EdgeJSON (ä»¥ä¸‹ç®€ç§°æœ¬è½¯ä»¶) çš„æ¡æ¬¾ã€æƒåˆ©ã€é™åˆ¶å’Œä¹‰åŠ¡ï¼Œè¯¦æƒ…å¦‚ä¸‹:
+2.è®¸å¯è¯æˆäºˆ:è®¸å¯æ–¹ç‰¹æ­¤æˆäºˆè¢«è®¸å¯äººä¸ªäººå¤åˆ¶ã€åˆ†å‘ã€ä¿®æ”¹ä»¥åŠéå•†ä¸šæ€§ä½¿ç”¨æœ¬è½¯ä»¶çš„æƒåˆ©(å•†ä¸šä½¿ç”¨è¯·
+  è”ç³»è½¯ä»¶åŸä½œè€…)ã€‚
+3.è¢«è®¸å¯äººä¹‰åŠ¡ï¼š
+	3.1.åœ¨å»¶ä¼¸çš„ä»£ç ä¸­ï¼ˆä¿®æ”¹å’Œç”±æœ¬è½¯ä»¶çš„æºä»£ç è¡ç”Ÿçš„ä»£ç ä¸­ï¼‰å¿…é¡»åŒ…å«åŸä»£ç ä¸­çš„åè®®ä¸å£°æ˜ã€‚
+	3.2.è‹¥è¢«è®¸å¯äººä¿®æ”¹äº†ä»£ç ï¼Œåˆ™å¿…é¡»åœ¨è¢«ä¿®æ”¹çš„æ–‡ä»¶ä¸­ä½œå‡ºç›¸åº”è¯´æ˜ã€‚
+4.å—é™:ç¦æ­¢è¢«è®¸å¯äººä»¥å•†ä¸šæˆ–ç›ˆåˆ©ä¸ºç›®çš„ä½¿ç”¨æœ¬è½¯ä»¶æˆ–å…¶è¡ç”Ÿä½œå“ï¼ˆåŒ…æ‹¬ä½†ä¸é™äºä¿®æ”¹æœ¬è½¯ä»¶ã€ä»¥æœ¬è½¯ä»¶ä¸º
+  åŸºç¡€è¿›è¡ŒäºŒæ¬¡å¼€å‘ã€è°ƒç”¨æœ¬è½¯ä»¶æ‰€å®šä¹‰çš„æ¥å£ç­‰ï¼‰ã€‚
+5.ç»ˆæ­¢:
+	5.1.è‹¥è¢«è®¸å¯äººæœ‰è¿æœ¬åè®®ä»»ä¸€æ¡æ¬¾å³è‡ªåŠ¨ç»ˆæ­¢è®¸å¯ã€‚
+	5.2.è®¸å¯æ–¹æœ‰æƒç»ˆæ­¢æœ¬åè®®åŠå¯¹è¢«è®¸å¯äººçš„è®¸å¯ã€‚
+6.å…è´£æ¡æ¬¾:åœ¨æ³•å¾‹å…è®¸çš„èŒƒå›´å†…ï¼Œè½¯ä»¶æ˜¯æ ¹æ®åŸæ ·æä¾›çš„ã€‚è®¸å¯æ–¹ä¸åº”å¯¹å› æœ¬è½¯ä»¶çš„æ“ä½œã€æ•…éšœã€bugæˆ–æœ¬è½¯
+  ä»¶ä¸è¢«è®¸å¯æ–¹çš„æœ€ç»ˆè®¾å¤‡ä¹‹é—´çš„ä»»ä½•å…¶ä»–äº¤äº’è€Œæ‹›è‡´çš„ä»»ä½•æŸå®³ã€è´¹ç”¨ã€ä»»ä½•å…¶ä»–ä»˜æ¬¾æ‰¿æ‹…è´£ä»»ï¼Œæ­¤å¤–ï¼Œåœ¨
+  ä¾èµ–æœ¬è½¯ä»¶æˆ–ä½¿ç”¨æœ¬è½¯ä»¶çš„æºä»£ç æ—¶ï¼Œ è®¸å¯æ–¹ä¸åº”å¯¹è¢«è®¸å¯æ–¹ç¼–å†™çš„æºä»£ç ä¸­çš„ä»»ä½•ç¼ºé™·è´Ÿè´£ã€‚
+7.ä¿ç•™æƒåˆ©ï¼šè®¸å¯æ–¹æœ‰æƒä¿®æ”¹æœ¬åè®®æ¡æ¬¾ï¼ˆè‹¥è¢«è®¸å¯äººä¸è®¤åŒä¿®æ”¹åçš„åè®®æ¡æ¬¾ï¼Œå¯åœæ­¢ä½¿ç”¨æœ¬è½¯ä»¶ï¼Œç»§ç»­ä½¿
+  ç”¨å³ä»£è¡¨åŒæ„ä¿®æ”¹åçš„åè®®æ¡æ¬¾ï¼‰ï¼Œå¹¶å¯¹æœ¬åè®®æœªå°½äº‹å®œä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
 */
 #include <iostream>
 #include <string>
@@ -30,7 +30,7 @@ using namespace std;
 
 enum Types			
 {
-	EdgeJSON_object,		//7ÖÖ½ÚµãÀàĞÍ
+	EdgeJSON_object,		//7ç§èŠ‚ç‚¹ç±»å‹
 	EdgeJSON_array,
 	EdgeJSON_int,
 	EdgeJSON_double,
@@ -38,104 +38,104 @@ enum Types
 	EdgeJSON_bool,
 	EdgeJSON_null,
 
-	EdgeJSON_layer,		//Îª´Ê·¨·ÖÎöÆ÷ÁíÍâÀ©Õ¹2ÖÖÀàĞÍ
+	EdgeJSON_layer,		//ä¸ºè¯æ³•åˆ†æå™¨å¦å¤–æ‰©å±•2ç§ç±»å‹
 	EdgeJSON_void
 };		
 
-enum Relations		//½ÚµãÖ®¼äµÄ¹ØÏµ
+enum Relations		//èŠ‚ç‚¹ä¹‹é—´çš„å…³ç³»
 {
-	brother,		//ĞÖµÜ½Úµã¹ØÏµ
-	son				//¸¸×Ó½Úµã¹ØÏµ
+	brother,		//å…„å¼ŸèŠ‚ç‚¹å…³ç³»
+	son				//çˆ¶å­èŠ‚ç‚¹å…³ç³»
 };
 
-class Node			//½ÚµãÀà
+class Node			//èŠ‚ç‚¹ç±»
 {
   public:
-	Node *brother;		//Ö¸ÏòĞÖµÜ½ÚµãµÄÖ¸Õë
-	Node *son;			//Ö¸Ïò×Ó½ÚµãµÄÖ¸Õë
+	Node *brother;		//æŒ‡å‘å…„å¼ŸèŠ‚ç‚¹çš„æŒ‡é’ˆ
+	Node *son;			//æŒ‡å‘å­èŠ‚ç‚¹çš„æŒ‡é’ˆ
 
-	Types node_type;	//½ÚµãÀàĞÍ
-	string key;			//½ÚµãµÄ¼üÃû³Æ(Èç¹ûÓĞ)
+	Types node_type;	//èŠ‚ç‚¹ç±»å‹
+	string key;			//èŠ‚ç‚¹çš„é”®åç§°(å¦‚æœæœ‰)
 	
-	string value_str;	//½ÚµãµÄÖµÀàĞÍ,¹²4ÖÖ
+	string value_str;	//èŠ‚ç‚¹çš„å€¼ç±»å‹,å…±4ç§
 	int value_int;
 	int value_null;
 	double value_dou;
 	bool value_boo;
 
-	Node();				//¹¹Ôìº¯Êı,³õÊ¼»¯½ÚµãµÄ³ÉÔ±±äÁ¿
+	Node();				//æ„é€ å‡½æ•°,åˆå§‹åŒ–èŠ‚ç‚¹çš„æˆå‘˜å˜é‡
 
-	Node &operator[](const char *);		//»ñÈ¡Ö¸¶¨½ÚµãµÄÒıÓÃ
+	Node &operator[](const char *);		//è·å–æŒ‡å®šèŠ‚ç‚¹çš„å¼•ç”¨
 	Node &operator[](int);
 };
 
-class token				//´Ê·¨·ÖÎöÆ÷´ÊËØµÄ´æ´¢
+class token				//è¯æ³•åˆ†æå™¨è¯ç´ çš„å­˜å‚¨
 {
 public:
-	Types token_type;	//´ÊËØÀàĞÍ
-	string token_str;	//´ÊËØÄÚÈİ
+	Types token_type;	//è¯ç´ ç±»å‹
+	string token_str;	//è¯ç´ å†…å®¹
 
-	token();			//³õÊ¼»¯´ÊËØÀàµÄ³ÉÔ±±äÁ¿
+	token();			//åˆå§‹åŒ–è¯ç´ ç±»çš„æˆå‘˜å˜é‡
 };
 
-class EdgeJSON			//Ö÷ÒªÀà,Ê¹ÓÃ±¾¿âµÄÆğµã,·½·¨½Ô·â×°ÓÚ´Ë
+class EdgeJSON			//ä¸»è¦ç±»,ä½¿ç”¨æœ¬åº“çš„èµ·ç‚¹,æ–¹æ³•çš†å°è£…äºæ­¤
 {
   public:
-	Node *root;			//Ö¸Ïòjson½á¹¹Ê×½Úµã
+	Node *root;			//æŒ‡å‘jsonç»“æ„é¦–èŠ‚ç‚¹
 	
-	EdgeJSON();			//¹¹Ôìº¯Êı,³õÊ¼»¯rootÖ¸Õë
+	EdgeJSON();			//æ„é€ å‡½æ•°,åˆå§‹åŒ–rootæŒ‡é’ˆ
 
-	Node &operator[](const char *);		//»ñÈ¡Ö¸¶¨½ÚµãµÄÒıÓÃ
+	Node &operator[](const char *);		//è·å–æŒ‡å®šèŠ‚ç‚¹çš„å¼•ç”¨
 	Node &operator[](int);
 
-	/*¼ÓÈë½Úµãº¯Êı,Í¨¹ı²ÎÊıÁĞ±íµÄ²»Í¬ÖØÔØº¯Êı.
-	 *NodeÊÇ±»¹ÒÔØµÄ½Úµã,Relations±íÃ÷ÊÇÒÔÊ²Ã´Éí·İ¹ÒÔØ.
-	 *ÆäÓà²ÎÊıÊÓ¼ÓÈëµÄ½ÚµãÇé¿ö¶ø¶¨.
+	/*åŠ å…¥èŠ‚ç‚¹å‡½æ•°,é€šè¿‡å‚æ•°åˆ—è¡¨çš„ä¸åŒé‡è½½å‡½æ•°.
+	 *Nodeæ˜¯è¢«æŒ‚è½½çš„èŠ‚ç‚¹,Relationsè¡¨æ˜æ˜¯ä»¥ä»€ä¹ˆèº«ä»½æŒ‚è½½.
+	 *å…¶ä½™å‚æ•°è§†åŠ å…¥çš„èŠ‚ç‚¹æƒ…å†µè€Œå®š.
 	 */
-	Node *AddKeyvalue(Node &, Relations, const char*, int);			//¼ÓÈëÖµÎªintĞÍ¼üÖµ¶Ô
-	Node *AddKeyvalue(Node &, Relations, const char*, double);		//¼ÓÈëÖµÎªdoubleĞÍ¼üÖµ¶Ô
-	Node *AddKeyvalue(Node &, Relations, const char*, const char *);	//¼ÓÈëÖµÎªstringĞÍ¼üÖµ¶Ô
-	Node *AddKeyvalue(Node &, Relations, const char*, bool);			//¼ÓÈëÖµÎªboolĞÍ¼üÖµ¶Ô
-	Node *AddKeyvalue(Node &, Relations, const char *);		//¼ÓÈënullÀàĞÍ
+	Node *AddKeyvalue(Node &, Relations, const char*, int);			//åŠ å…¥å€¼ä¸ºintå‹é”®å€¼å¯¹
+	Node *AddKeyvalue(Node &, Relations, const char*, double);		//åŠ å…¥å€¼ä¸ºdoubleå‹é”®å€¼å¯¹
+	Node *AddKeyvalue(Node &, Relations, const char*, const char *);	//åŠ å…¥å€¼ä¸ºstringå‹é”®å€¼å¯¹
+	Node *AddKeyvalue(Node &, Relations, const char*, bool);			//åŠ å…¥å€¼ä¸ºboolå‹é”®å€¼å¯¹
+	Node *AddKeyvalue(Node &, Relations, const char *);		//åŠ å…¥nullç±»å‹
 
-	Node *AddArray(Node &, Relations, const char *);	//¼ÓÈëÊı×éµ½¶ÔÏó
-	Node *AddArray(Node &, Relations);				//¼ÓÈëÊı×éµ½Êı×é
-	Node *AddArray(EdgeJSON &);			//¼ÓÈëÊı×éµ½EdgeJSON
+	Node *AddArray(Node &, Relations, const char *);	//åŠ å…¥æ•°ç»„åˆ°å¯¹è±¡
+	Node *AddArray(Node &, Relations);				//åŠ å…¥æ•°ç»„åˆ°æ•°ç»„
+	Node *AddArray(EdgeJSON &);			//åŠ å…¥æ•°ç»„åˆ°EdgeJSON
 
-	Node *AddObject(Node &, Relations, const char *); //¼ÓÈë¶ÔÏóµ½¶ÔÏó
-	Node *AddObject(Node &, Relations);				 //¼ÓÈë¶ÔÏóµ½Êı×é
-	Node *AddObject(EdgeJSON &);			 //¼ÓÈë¶ÔÏóµ½EdgeJSON
+	Node *AddObject(Node &, Relations, const char *); //åŠ å…¥å¯¹è±¡åˆ°å¯¹è±¡
+	Node *AddObject(Node &, Relations);				 //åŠ å…¥å¯¹è±¡åˆ°æ•°ç»„
+	Node *AddObject(EdgeJSON &);			 //åŠ å…¥å¯¹è±¡åˆ°EdgeJSON
 
-	Node *AddValue(Node &, Relations, int);			//¼ÓÈëintĞÍÊı×éÔªËØ
-	Node *AddValue(Node &, Relations, double);		//¼ÓÈëdoubleĞÍÊı×éÔªËØ
-	Node *AddValue(Node &, Relations, const char *);	//¼ÓÈëstringĞÍÊı×éÔªËØ
-	Node *AddValue(Node &, Relations, bool);			//¼ÓÈëboolĞÍÊı×éÔªËØ
-	Node *AddValue(Node &, Relations);					//¼ÓÈënullÊı×éÔªËØ
+	Node *AddValue(Node &, Relations, int);			//åŠ å…¥intå‹æ•°ç»„å…ƒç´ 
+	Node *AddValue(Node &, Relations, double);		//åŠ å…¥doubleå‹æ•°ç»„å…ƒç´ 
+	Node *AddValue(Node &, Relations, const char *);	//åŠ å…¥stringå‹æ•°ç»„å…ƒç´ 
+	Node *AddValue(Node &, Relations, bool);			//åŠ å…¥boolå‹æ•°ç»„å…ƒç´ 
+	Node *AddValue(Node &, Relations);					//åŠ å…¥nullæ•°ç»„å…ƒç´ 
 
-	string EdgeJSONPrint();				//´òÓ¡json½á¹¹,Êä³ö×Ö·û´®
-	bool DeleteEdgeJSON();		//É¾³ıÕû¸ö½á¹¹
-	void EdgeJSONParse(string);		//½âÎö×Ö·û´®
+	string EdgeJSONPrint();				//æ‰“å°jsonç»“æ„,è¾“å‡ºå­—ç¬¦ä¸²
+	bool DeleteEdgeJSON();		//åˆ é™¤æ•´ä¸ªç»“æ„
+	void EdgeJSONParse(string);		//è§£æå­—ç¬¦ä¸²
 
 private:
-	Node * CreateNode(Node &, Relations);		//Éú³ÉÒ»¸ö½Úµã£¬ÒÔ±¸¸³ÖµÓë¹ÒÔØµ½Ê÷½á¹¹ÉÏ
+	Node * CreateNode(Node &, Relations);		//ç”Ÿæˆä¸€ä¸ªèŠ‚ç‚¹ï¼Œä»¥å¤‡èµ‹å€¼ä¸æŒ‚è½½åˆ°æ ‘ç»“æ„ä¸Š
 
-	string TraversalPrint(Node *);		//±éÀúÀàÊ÷½á¹¹µÄÃ¿¸ö½ÚµãÒÔ±ãÉú³ÉÊä³ö×Ö·û´®
-	string PrintObject(Node *);			//´òÓ¡¶ÔÏó
-	string PrintArray(Node *);			//´òÓ¡Êı×é
-	string PrintKeyvalue(Node *);		//´òÓ¡ÓĞ¼üÖµ
+	string TraversalPrint(Node *);		//éå†ç±»æ ‘ç»“æ„çš„æ¯ä¸ªèŠ‚ç‚¹ä»¥ä¾¿ç”Ÿæˆè¾“å‡ºå­—ç¬¦ä¸²
+	string PrintObject(Node *);			//æ‰“å°å¯¹è±¡
+	string PrintArray(Node *);			//æ‰“å°æ•°ç»„
+	string PrintKeyvalue(Node *);		//æ‰“å°æœ‰é”®å€¼
 
-	bool TraversalDelete(Node *);		//±éÀújson½á¹¹½øĞĞÉ¾³ı
+	bool TraversalDelete(Node *);		//éå†jsonç»“æ„è¿›è¡Œåˆ é™¤
 
-	Node *LayerParse(string);			//·Ö²ã½âÎö
-	void  Lexing(vector<token *>&, string &);	//´Ê·¨·ÖÎöÆ÷
-	Node *ParseObject(string);			//½âÎö¶ÔÏó
-	Node *ParseArray(string);			//½âÎöÊı×é
-	Node *ParseInt(string);				//½âÎöint
-	Node *ParseDouble(string);			//½âÎödouble
-	Node *ParseString(string);			//½âÎöstring
-	Node *ParseBool(string);			//½âÎöbool
-	Node *ParseNull(string);			//½âÎönull
+	Node *LayerParse(string);			//åˆ†å±‚è§£æ
+	void  Lexing(vector<token *>&, string &);	//è¯æ³•åˆ†æå™¨
+	Node *ParseObject(string);			//è§£æå¯¹è±¡
+	Node *ParseArray(string);			//è§£ææ•°ç»„
+	Node *ParseInt(string);				//è§£æint
+	Node *ParseDouble(string);			//è§£ædouble
+	Node *ParseString(string);			//è§£æstring
+	Node *ParseBool(string);			//è§£æbool
+	Node *ParseNull(string);			//è§£ænull
 };
 
-Node &GetNode(Node *, const char *);		//Îªoperator[]¹²ÓÃ²¿·Ö
+Node &GetNode(Node *, const char *);		//ä¸ºoperator[]å…±ç”¨éƒ¨åˆ†
 Node &GetNode(Node *, int);

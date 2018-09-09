@@ -1,51 +1,51 @@
 /*
-EdgeJSON-Ğí¿ÉĞ­Òé
+EdgeJSON-è®¸å¯åè®®
 Copyright (c) 2018 Jiaminwei
 
-1.ĞòÑÔ:±¾Ğ­ÒéÓÃÓÚ¹ÜÏ½ÓÃ»§¼°ÉÌÒµÊµÌå (ÒÔÏÂ¼ò³Æ£º±»Ğí¿ÉÈË) ºÍÈí¼şÔ­×÷Õß£¨ÒÔÏÂ¼ò³Æ£ºĞí¿É·½£©Ö®¼ä
-  µÄ¹ØÏµ¡£Ê¹ÓÃ±¾Èí¼ş£¨°üÀ¨µ«²»ÏŞÓÚ¸´ÖÆ¡¢ÏÂÔØ¡¢°²×°¡¢ÔËĞĞ±¾Èí¼ş£©¼´ÊÓÎªÍ¬Òâ±¾Ğ­Òé¡£±¾Ğ­Òé¹æ¶¨ÁË
-  Ê¹ÓÃĞí¿É·½´´½¨ºÍÓµÓĞµÄEdgeJSON (ÒÔÏÂ¼ò³Æ±¾Èí¼ş) µÄÌõ¿î¡¢È¨Àû¡¢ÏŞÖÆºÍÒåÎñ£¬ÏêÇéÈçÏÂ:
-2.Ğí¿ÉÖ¤ÊÚÓè:Ğí¿É·½ÌØ´ËÊÚÓè±»Ğí¿ÉÈË¸öÈË¸´ÖÆ¡¢·Ö·¢¡¢ĞŞ¸ÄÒÔ¼°·ÇÉÌÒµĞÔÊ¹ÓÃ±¾Èí¼şµÄÈ¨Àû(ÉÌÒµÊ¹ÓÃÇë
-  ÁªÏµÈí¼şÔ­×÷Õß)¡£
-3.±»Ğí¿ÉÈËÒåÎñ£º
-	3.1.ÔÚÑÓÉìµÄ´úÂëÖĞ£¨ĞŞ¸ÄºÍÓÉ±¾Èí¼şµÄÔ´´úÂëÑÜÉúµÄ´úÂëÖĞ£©±ØĞë°üº¬Ô­´úÂëÖĞµÄĞ­ÒéÓëÉùÃ÷¡£
-	3.2.Èô±»Ğí¿ÉÈËĞŞ¸ÄÁË´úÂë£¬Ôò±ØĞëÔÚ±»ĞŞ¸ÄµÄÎÄ¼şÖĞ×÷³öÏàÓ¦ËµÃ÷¡£
-4.ÊÜÏŞ:½ûÖ¹±»Ğí¿ÉÈËÒÔÉÌÒµ»òÓ¯ÀûÎªÄ¿µÄÊ¹ÓÃ±¾Èí¼ş»òÆäÑÜÉú×÷Æ·£¨°üÀ¨µ«²»ÏŞÓÚĞŞ¸Ä±¾Èí¼ş¡¢ÒÔ±¾Èí¼şÎª
-  »ù´¡½øĞĞ¶ş´Î¿ª·¢¡¢µ÷ÓÃ±¾Èí¼şËù¶¨ÒåµÄ½Ó¿ÚµÈ£©¡£
-5.ÖÕÖ¹:
-	5.1.Èô±»Ğí¿ÉÈËÓĞÎ¥±¾Ğ­ÒéÈÎÒ»Ìõ¿î¼´×Ô¶¯ÖÕÖ¹Ğí¿É¡£
-	5.2.Ğí¿É·½ÓĞÈ¨ÖÕÖ¹±¾Ğ­Òé¼°¶Ô±»Ğí¿ÉÈËµÄĞí¿É¡£
-6.ÃâÔğÌõ¿î:ÔÚ·¨ÂÉÔÊĞíµÄ·¶Î§ÄÚ£¬Èí¼şÊÇ¸ù¾İÔ­ÑùÌá¹©µÄ¡£Ğí¿É·½²»Ó¦¶ÔÒò±¾Èí¼şµÄ²Ù×÷¡¢¹ÊÕÏ¡¢bug»ò±¾Èí
-  ¼şÓë±»Ğí¿É·½µÄ×îÖÕÉè±¸Ö®¼äµÄÈÎºÎÆäËû½»»¥¶øÕĞÖÂµÄÈÎºÎËğº¦¡¢·ÑÓÃ¡¢ÈÎºÎÆäËû¸¶¿î³Ğµ£ÔğÈÎ£¬´ËÍâ£¬ÔÚ
-  ÒÀÀµ±¾Èí¼ş»òÊ¹ÓÃ±¾Èí¼şµÄÔ´´úÂëÊ±£¬ Ğí¿É·½²»Ó¦¶Ô±»Ğí¿É·½±àĞ´µÄÔ´´úÂëÖĞµÄÈÎºÎÈ±Ïİ¸ºÔğ¡£
-7.±£ÁôÈ¨Àû£ºĞí¿É·½ÓĞÈ¨ĞŞ¸Ä±¾Ğ­ÒéÌõ¿î£¨Èô±»Ğí¿ÉÈË²»ÈÏÍ¬ĞŞ¸ÄºóµÄĞ­ÒéÌõ¿î£¬¿ÉÍ£Ö¹Ê¹ÓÃ±¾Èí¼ş£¬¼ÌĞøÊ¹
-  ÓÃ¼´´ú±íÍ¬ÒâĞŞ¸ÄºóµÄĞ­ÒéÌõ¿î£©£¬²¢¶Ô±¾Ğ­ÒéÎ´¾¡ÊÂÒË±£ÁôËùÓĞÈ¨Àû¡£
+1.åºè¨€:æœ¬åè®®ç”¨äºç®¡è¾–ç”¨æˆ·åŠå•†ä¸šå®ä½“ (ä»¥ä¸‹ç®€ç§°ï¼šè¢«è®¸å¯äºº) å’Œè½¯ä»¶åŸä½œè€…ï¼ˆä»¥ä¸‹ç®€ç§°ï¼šè®¸å¯æ–¹ï¼‰ä¹‹é—´
+  çš„å…³ç³»ã€‚ä½¿ç”¨æœ¬è½¯ä»¶ï¼ˆåŒ…æ‹¬ä½†ä¸é™äºå¤åˆ¶ã€ä¸‹è½½ã€å®‰è£…ã€è¿è¡Œæœ¬è½¯ä»¶ï¼‰å³è§†ä¸ºåŒæ„æœ¬åè®®ã€‚æœ¬åè®®è§„å®šäº†
+  ä½¿ç”¨è®¸å¯æ–¹åˆ›å»ºå’Œæ‹¥æœ‰çš„EdgeJSON (ä»¥ä¸‹ç®€ç§°æœ¬è½¯ä»¶) çš„æ¡æ¬¾ã€æƒåˆ©ã€é™åˆ¶å’Œä¹‰åŠ¡ï¼Œè¯¦æƒ…å¦‚ä¸‹:
+2.è®¸å¯è¯æˆäºˆ:è®¸å¯æ–¹ç‰¹æ­¤æˆäºˆè¢«è®¸å¯äººä¸ªäººå¤åˆ¶ã€åˆ†å‘ã€ä¿®æ”¹ä»¥åŠéå•†ä¸šæ€§ä½¿ç”¨æœ¬è½¯ä»¶çš„æƒåˆ©(å•†ä¸šä½¿ç”¨è¯·
+  è”ç³»è½¯ä»¶åŸä½œè€…)ã€‚
+3.è¢«è®¸å¯äººä¹‰åŠ¡ï¼š
+	3.1.åœ¨å»¶ä¼¸çš„ä»£ç ä¸­ï¼ˆä¿®æ”¹å’Œç”±æœ¬è½¯ä»¶çš„æºä»£ç è¡ç”Ÿçš„ä»£ç ä¸­ï¼‰å¿…é¡»åŒ…å«åŸä»£ç ä¸­çš„åè®®ä¸å£°æ˜ã€‚
+	3.2.è‹¥è¢«è®¸å¯äººä¿®æ”¹äº†ä»£ç ï¼Œåˆ™å¿…é¡»åœ¨è¢«ä¿®æ”¹çš„æ–‡ä»¶ä¸­ä½œå‡ºç›¸åº”è¯´æ˜ã€‚
+4.å—é™:ç¦æ­¢è¢«è®¸å¯äººä»¥å•†ä¸šæˆ–ç›ˆåˆ©ä¸ºç›®çš„ä½¿ç”¨æœ¬è½¯ä»¶æˆ–å…¶è¡ç”Ÿä½œå“ï¼ˆåŒ…æ‹¬ä½†ä¸é™äºä¿®æ”¹æœ¬è½¯ä»¶ã€ä»¥æœ¬è½¯ä»¶ä¸º
+  åŸºç¡€è¿›è¡ŒäºŒæ¬¡å¼€å‘ã€è°ƒç”¨æœ¬è½¯ä»¶æ‰€å®šä¹‰çš„æ¥å£ç­‰ï¼‰ã€‚
+5.ç»ˆæ­¢:
+	5.1.è‹¥è¢«è®¸å¯äººæœ‰è¿æœ¬åè®®ä»»ä¸€æ¡æ¬¾å³è‡ªåŠ¨ç»ˆæ­¢è®¸å¯ã€‚
+	5.2.è®¸å¯æ–¹æœ‰æƒç»ˆæ­¢æœ¬åè®®åŠå¯¹è¢«è®¸å¯äººçš„è®¸å¯ã€‚
+6.å…è´£æ¡æ¬¾:åœ¨æ³•å¾‹å…è®¸çš„èŒƒå›´å†…ï¼Œè½¯ä»¶æ˜¯æ ¹æ®åŸæ ·æä¾›çš„ã€‚è®¸å¯æ–¹ä¸åº”å¯¹å› æœ¬è½¯ä»¶çš„æ“ä½œã€æ•…éšœã€bugæˆ–æœ¬è½¯
+  ä»¶ä¸è¢«è®¸å¯æ–¹çš„æœ€ç»ˆè®¾å¤‡ä¹‹é—´çš„ä»»ä½•å…¶ä»–äº¤äº’è€Œæ‹›è‡´çš„ä»»ä½•æŸå®³ã€è´¹ç”¨ã€ä»»ä½•å…¶ä»–ä»˜æ¬¾æ‰¿æ‹…è´£ä»»ï¼Œæ­¤å¤–ï¼Œåœ¨
+  ä¾èµ–æœ¬è½¯ä»¶æˆ–ä½¿ç”¨æœ¬è½¯ä»¶çš„æºä»£ç æ—¶ï¼Œ è®¸å¯æ–¹ä¸åº”å¯¹è¢«è®¸å¯æ–¹ç¼–å†™çš„æºä»£ç ä¸­çš„ä»»ä½•ç¼ºé™·è´Ÿè´£ã€‚
+7.ä¿ç•™æƒåˆ©ï¼šè®¸å¯æ–¹æœ‰æƒä¿®æ”¹æœ¬åè®®æ¡æ¬¾ï¼ˆè‹¥è¢«è®¸å¯äººä¸è®¤åŒä¿®æ”¹åçš„åè®®æ¡æ¬¾ï¼Œå¯åœæ­¢ä½¿ç”¨æœ¬è½¯ä»¶ï¼Œç»§ç»­ä½¿
+  ç”¨å³ä»£è¡¨åŒæ„ä¿®æ”¹åçš„åè®®æ¡æ¬¾ï¼‰ï¼Œå¹¶å¯¹æœ¬åè®®æœªå°½äº‹å®œä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
 */
 #include "EdgeJSON.h"
 
 using namespace std;
 
-Node::Node()		//½Úµã¹¹Ôìº¯Êı,Í¨¹ı½Úµã³ÉÔ±µÄÖµÊÇ·ñÎª¿ÕÅĞ¶ÏÊÇ·ñ±»Ê¹ÓÃ
+Node::Node() //èŠ‚ç‚¹æ„é€ å‡½æ•°,é€šè¿‡èŠ‚ç‚¹æˆå‘˜çš„å€¼æ˜¯å¦ä¸ºç©ºåˆ¤æ–­æ˜¯å¦è¢«ä½¿ç”¨
 {
-	this->brother = nullptr;		//³õÊ¼»¯Ö¸ÕëÀàĞÍµÄ³ÉÔ±Îª¿ÕÖ¸Õë
+	this->brother = nullptr; //åˆå§‹åŒ–æŒ‡é’ˆç±»å‹çš„æˆå‘˜ä¸ºç©ºæŒ‡é’ˆ
 	this->son = nullptr;
 	this->key = "";
-	this->value_boo = NULL;			//³õÊ¼»¯ÊıÖµÀàĞÍµÄ³ÉÔ±ÎªNULL
+	this->value_boo = NULL; //åˆå§‹åŒ–æ•°å€¼ç±»å‹çš„æˆå‘˜ä¸ºNULL
 	this->value_dou = NULL;
 	this->value_int = NULL;
 	this->value_null = NULL;
 	this->value_str = "";
 }
 
-Node & Node::operator[](const char *c)		//[]ÔËËã·ûÖØÔØ,»ñÈ¡×î½üÒ»²ã½ÚµãµÄ¼üÃû³ÆÎªcµÄ½Úµã
+Node &Node::operator[](const char *c) //[]è¿ç®—ç¬¦é‡è½½,è·å–æœ€è¿‘ä¸€å±‚èŠ‚ç‚¹çš„é”®åç§°ä¸ºcçš„èŠ‚ç‚¹
 {
-	Node *now_ptr = this->son;		//½«µ÷ÓÃ¸Ãº¯ÊıµÄ¶ÔÏóµÄ×Ó½ÚµãµÄÖ¸ÕëÈ¡³ö
+	Node *now_ptr = this->son; //å°†è°ƒç”¨è¯¥å‡½æ•°çš„å¯¹è±¡çš„å­èŠ‚ç‚¹çš„æŒ‡é’ˆå–å‡º
 	return GetNode(now_ptr, c);
 }
 
-Node & Node::operator[](int i)			//[]ÔËËã·ûÖØÔØ,»ñÈ¡×î½üÒ»²ã½ÚµãµÄµÚi¸ö½Úµã
+Node &Node::operator[](int i) //[]è¿ç®—ç¬¦é‡è½½,è·å–æœ€è¿‘ä¸€å±‚èŠ‚ç‚¹çš„ç¬¬iä¸ªèŠ‚ç‚¹
 {
-	Node *now_ptr = this->son;		//½«µ÷ÓÃ¸Ãº¯ÊıµÄ¶ÔÏóµÄ×Ó½ÚµãµÄÖ¸ÕëÈ¡³ö
+	Node *now_ptr = this->son; //å°†è°ƒç”¨è¯¥å‡½æ•°çš„å¯¹è±¡çš„å­èŠ‚ç‚¹çš„æŒ‡é’ˆå–å‡º
 	return GetNode(now_ptr, i);
 }
 
@@ -56,35 +56,35 @@ token::token()
 
 EdgeJSON::EdgeJSON()
 {
-	this->root = nullptr;			//³õÊ¼»¯rootÖ¸Õë
+	this->root = nullptr; //åˆå§‹åŒ–rootæŒ‡é’ˆ
 }
 
-Node & EdgeJSON::operator[](const char *c)		//[]ÔËËã·ûÖØÔØ,»ñÈ¡×î½üÒ»²ã½ÚµãµÄ¼üÃû³ÆÎªcµÄ½Úµã	
+Node &EdgeJSON::operator[](const char *c) //[]è¿ç®—ç¬¦é‡è½½,è·å–æœ€è¿‘ä¸€å±‚èŠ‚ç‚¹çš„é”®åç§°ä¸ºcçš„èŠ‚ç‚¹
 {
-	Node *now_ptr = this->root;		//È¡³öEdgeJSONÀàÖ¸ÏòµÄ¸ù½ÚµãÖ¸Õë
+	Node *now_ptr = this->root; //å–å‡ºEdgeJSONç±»æŒ‡å‘çš„æ ¹èŠ‚ç‚¹æŒ‡é’ˆ
 	return GetNode(now_ptr, c);
 }
 
-Node & EdgeJSON::operator[](int i)		//[]ÔËËã·ûÖØÔØ,»ñÈ¡×î½üÒ»²ã½ÚµãµÄµÚi¸ö½Úµã
+Node &EdgeJSON::operator[](int i) //[]è¿ç®—ç¬¦é‡è½½,è·å–æœ€è¿‘ä¸€å±‚èŠ‚ç‚¹çš„ç¬¬iä¸ªèŠ‚ç‚¹
 {
-	Node *now_ptr = this->root;		//È¡³öEdgeJSONÀàÖ¸ÏòµÄ¸ù½ÚµãÖ¸Õë
+	Node *now_ptr = this->root; //å–å‡ºEdgeJSONç±»æŒ‡å‘çš„æ ¹èŠ‚ç‚¹æŒ‡é’ˆ
 	return GetNode(now_ptr, i);
 }
 
-Node * EdgeJSON::AddKeyvalue(Node &n, Relations r, const char *c, int i)
+Node *EdgeJSON::AddKeyvalue(Node &n, Relations r, const char *c, int i)
 {
-	Node *add_ptr = CreateNode(n,r);		//´´½¨½ÚµãÍê³É¹ÒÔØ
-	if (add_ptr == nullptr)					//ÅĞ¶Ï½ÚµãÊÇ·ñ´´½¨³É¹¦,Ê§°ÜÔò·µ»Ø¿ÕÖ¸Õë
+	Node *add_ptr = CreateNode(n, r); //åˆ›å»ºèŠ‚ç‚¹å®ŒæˆæŒ‚è½½
+	if (add_ptr == nullptr)			  //åˆ¤æ–­èŠ‚ç‚¹æ˜¯å¦åˆ›å»ºæˆåŠŸ,å¤±è´¥åˆ™è¿”å›ç©ºæŒ‡é’ˆ
 	{
 		return nullptr;
 	}
-	add_ptr->node_type = EdgeJSON_int;		//ÉèÖÃ½ÚµãÀàĞÍ
-	add_ptr->key = c;						//ÉèÖÃ½¡Ãû³Æ
-	add_ptr->value_int = i;					//ÉèÖÃÖµ
-	return add_ptr;							
+	add_ptr->node_type = EdgeJSON_int; //è®¾ç½®èŠ‚ç‚¹ç±»å‹
+	add_ptr->key = c;				   //è®¾ç½®å¥åç§°
+	add_ptr->value_int = i;			   //è®¾ç½®å€¼
+	return add_ptr;
 }
 
-Node * EdgeJSON::AddKeyvalue(Node &n, Relations r, const char *c, double d)
+Node *EdgeJSON::AddKeyvalue(Node &n, Relations r, const char *c, double d)
 {
 	Node *add_ptr = CreateNode(n, r);
 	if (add_ptr == nullptr)
@@ -97,7 +97,7 @@ Node * EdgeJSON::AddKeyvalue(Node &n, Relations r, const char *c, double d)
 	return add_ptr;
 }
 
-Node * EdgeJSON::AddKeyvalue(Node &n, Relations r, const char *c, const char *cc)
+Node *EdgeJSON::AddKeyvalue(Node &n, Relations r, const char *c, const char *cc)
 {
 	Node *add_ptr = CreateNode(n, r);
 	if (add_ptr == nullptr)
@@ -110,7 +110,7 @@ Node * EdgeJSON::AddKeyvalue(Node &n, Relations r, const char *c, const char *cc
 	return add_ptr;
 }
 
-Node * EdgeJSON::AddKeyvalue(Node &n, Relations r, const char *c, bool b)
+Node *EdgeJSON::AddKeyvalue(Node &n, Relations r, const char *c, bool b)
 {
 	Node *add_ptr = CreateNode(n, r);
 	if (add_ptr == nullptr)
@@ -123,7 +123,7 @@ Node * EdgeJSON::AddKeyvalue(Node &n, Relations r, const char *c, bool b)
 	return add_ptr;
 }
 
-Node * EdgeJSON::AddKeyvalue(Node &n, Relations r, const char *c)
+Node *EdgeJSON::AddKeyvalue(Node &n, Relations r, const char *c)
 {
 	Node *add_ptr = CreateNode(n, r);
 	if (add_ptr == nullptr)
@@ -136,7 +136,7 @@ Node * EdgeJSON::AddKeyvalue(Node &n, Relations r, const char *c)
 	return add_ptr;
 }
 
-Node * EdgeJSON::AddArray(Node &n, Relations r, const char *c)
+Node *EdgeJSON::AddArray(Node &n, Relations r, const char *c)
 {
 	Node *add_ptr = CreateNode(n, r);
 	if (add_ptr == nullptr)
@@ -148,7 +148,7 @@ Node * EdgeJSON::AddArray(Node &n, Relations r, const char *c)
 	return add_ptr;
 }
 
-Node * EdgeJSON::AddArray(Node &n, Relations r)
+Node *EdgeJSON::AddArray(Node &n, Relations r)
 {
 	Node *add_ptr = CreateNode(n, r);
 	if (add_ptr == nullptr)
@@ -159,7 +159,7 @@ Node * EdgeJSON::AddArray(Node &n, Relations r)
 	return add_ptr;
 }
 
-Node * EdgeJSON::AddArray(EdgeJSON &n)
+Node *EdgeJSON::AddArray(EdgeJSON &n)
 {
 	Node *add_ptr = new Node;
 	if (add_ptr == nullptr)
@@ -171,7 +171,7 @@ Node * EdgeJSON::AddArray(EdgeJSON &n)
 	return add_ptr;
 }
 
-Node * EdgeJSON::AddObject(Node &n, Relations r, const char *c)
+Node *EdgeJSON::AddObject(Node &n, Relations r, const char *c)
 {
 	Node *add_ptr = CreateNode(n, r);
 	if (add_ptr == nullptr)
@@ -183,7 +183,7 @@ Node * EdgeJSON::AddObject(Node &n, Relations r, const char *c)
 	return add_ptr;
 }
 
-Node * EdgeJSON::AddObject(Node &n, Relations r)
+Node *EdgeJSON::AddObject(Node &n, Relations r)
 {
 	Node *add_ptr = CreateNode(n, r);
 	if (add_ptr == nullptr)
@@ -194,7 +194,7 @@ Node * EdgeJSON::AddObject(Node &n, Relations r)
 	return add_ptr;
 }
 
-Node * EdgeJSON::AddObject(EdgeJSON &n)
+Node *EdgeJSON::AddObject(EdgeJSON &n)
 {
 	Node *add_ptr = new Node;
 	if (add_ptr == nullptr)
@@ -206,7 +206,7 @@ Node * EdgeJSON::AddObject(EdgeJSON &n)
 	return add_ptr;
 }
 
-Node * EdgeJSON::AddValue(Node &n, Relations r, int i)
+Node *EdgeJSON::AddValue(Node &n, Relations r, int i)
 {
 	Node *add_ptr = CreateNode(n, r);
 	if (add_ptr == nullptr)
@@ -218,7 +218,7 @@ Node * EdgeJSON::AddValue(Node &n, Relations r, int i)
 	return add_ptr;
 }
 
-Node * EdgeJSON::AddValue(Node &n, Relations r, double d)
+Node *EdgeJSON::AddValue(Node &n, Relations r, double d)
 {
 	Node *add_ptr = CreateNode(n, r);
 	if (add_ptr == nullptr)
@@ -230,7 +230,7 @@ Node * EdgeJSON::AddValue(Node &n, Relations r, double d)
 	return add_ptr;
 }
 
-Node * EdgeJSON::AddValue(Node &n, Relations r, const char *c)
+Node *EdgeJSON::AddValue(Node &n, Relations r, const char *c)
 {
 	Node *add_ptr = CreateNode(n, r);
 	if (add_ptr == nullptr)
@@ -242,7 +242,7 @@ Node * EdgeJSON::AddValue(Node &n, Relations r, const char *c)
 	return add_ptr;
 }
 
-Node * EdgeJSON::AddValue(Node &n, Relations r, bool b)
+Node *EdgeJSON::AddValue(Node &n, Relations r, bool b)
 {
 	Node *add_ptr = CreateNode(n, r);
 	if (add_ptr == nullptr)
@@ -254,7 +254,7 @@ Node * EdgeJSON::AddValue(Node &n, Relations r, bool b)
 	return add_ptr;
 }
 
-Node * EdgeJSON::AddValue(Node &n, Relations r)
+Node *EdgeJSON::AddValue(Node &n, Relations r)
 {
 	Node *add_ptr = CreateNode(n, r);
 	if (add_ptr == nullptr)
@@ -268,22 +268,22 @@ Node * EdgeJSON::AddValue(Node &n, Relations r)
 
 string EdgeJSON::EdgeJSONPrint()
 {
-	string print_str;					//´æ´¢Éú³ÉµÄjson×Ö·û´®
-	Node *print_ptr = this->root;		//È¡³öjson½á¹¹Ê×½Úµã¿ªÊ¼´¦Àí
+	string print_str;			  //å­˜å‚¨ç”Ÿæˆçš„jsonå­—ç¬¦ä¸²
+	Node *print_ptr = this->root; //å–å‡ºjsonç»“æ„é¦–èŠ‚ç‚¹å¼€å§‹å¤„ç†
 	if (print_ptr == nullptr)
 	{
 		return print_str;
 	}
-	print_str = print_str + TraversalPrint(print_ptr);		//µ÷ÓÃ±éÀú½á¹¹µÄº¯Êı
-	return print_str;					//·µ»Ø×Ö·û´®
+	print_str = print_str + TraversalPrint(print_ptr); //è°ƒç”¨éå†ç»“æ„çš„å‡½æ•°
+	return print_str;								   //è¿”å›å­—ç¬¦ä¸²
 }
 
-bool EdgeJSON::DeleteEdgeJSON()		//É¾³ıËùÓĞ½Úµã
+bool EdgeJSON::DeleteEdgeJSON() //åˆ é™¤æ‰€æœ‰èŠ‚ç‚¹
 {
-	if (TraversalDelete(this->root))			//´«ÈëÊ×½Úµã½øĞĞ±éÀúÉ¾³ı
+	if (TraversalDelete(this->root)) //ä¼ å…¥é¦–èŠ‚ç‚¹è¿›è¡Œéå†åˆ é™¤
 	{
-		this->root = nullptr;					//½«EdgeJSON¶ÔÏóµÄrootÖÃ¿Õ
-		return true;						
+		this->root = nullptr; //å°†EdgeJSONå¯¹è±¡çš„rootç½®ç©º
+		return true;
 	}
 	return false;
 }
@@ -292,14 +292,14 @@ void EdgeJSON::EdgeJSONParse(string parse_str)
 {
 	string words;
 	int flag = 0;
-	for (int i = 0; i < parse_str.size(); i++)		//ÌŞ³ı¿Õ¸ñ¡¢»»ĞĞ·û¡¢ÖÆ±í·û
+	for (int i = 0; i < parse_str.size(); i++) //å‰”é™¤ç©ºæ ¼ã€æ¢è¡Œç¬¦ã€åˆ¶è¡¨ç¬¦
 	{
 		if (parse_str[i] == '\"')
 		{
 			flag++;
 		}
-		if (((parse_str[i] != ' ') && (parse_str[i] != '\n') && (parse_str[i] != '\t'))||
-			flag%2!=0)
+		if (((parse_str[i] != ' ') && (parse_str[i] != '\n') && (parse_str[i] != '\t')) ||
+			flag % 2 != 0)
 		{
 			int j = 0;
 			words += parse_str[i];
@@ -312,80 +312,80 @@ void EdgeJSON::EdgeJSONParse(string parse_str)
 
 Node *EdgeJSON::CreateNode(Node &n, Relations r)
 {
-	Node *newnode_ptr = new Node;		//¶¯Ì¬¿ª±ÙÒ»¸ö½ÚµãµÄÄÚ´æ¿Õ¼ä
-	if (newnode_ptr == nullptr)			//ÅĞ¶ÏÊÇ·ñ³É¹¦Éú³ÉĞÂ½Úµã
+	Node *newnode_ptr = new Node; //åŠ¨æ€å¼€è¾Ÿä¸€ä¸ªèŠ‚ç‚¹çš„å†…å­˜ç©ºé—´
+	if (newnode_ptr == nullptr)   //åˆ¤æ–­æ˜¯å¦æˆåŠŸç”Ÿæˆæ–°èŠ‚ç‚¹
 	{
 		return nullptr;
 	}
-	if (r == son)						//ÒÔ×Ó½ÚµãÉí·İ¹ÒÔØ
+	if (r == son) //ä»¥å­èŠ‚ç‚¹èº«ä»½æŒ‚è½½
 	{
 		n.son = newnode_ptr;
 	}
 	else
 	{
-		n.brother = newnode_ptr;		//ÒÔĞÖµÜ½ÚµãÉí·İ¹ÒÔØ
+		n.brother = newnode_ptr; //ä»¥å…„å¼ŸèŠ‚ç‚¹èº«ä»½æŒ‚è½½
 	}
-	return newnode_ptr;					//·µ»ØĞÂ½¨½ÚµãµÄÖ¸Õë
+	return newnode_ptr; //è¿”å›æ–°å»ºèŠ‚ç‚¹çš„æŒ‡é’ˆ
 }
 
-string EdgeJSON::TraversalPrint(Node *n)		//¶Ô½Úµã·ÖÀà½øĞĞ´¦Àí
+string EdgeJSON::TraversalPrint(Node *n) //å¯¹èŠ‚ç‚¹åˆ†ç±»è¿›è¡Œå¤„ç†
 {
 	string temp;
 	Node *now_ptr = n;
 	while (1)
 	{
-		if (now_ptr->node_type == EdgeJSON_object)		//´òÓ¡¶ÔÏó²¢½ø×Ö·û´®
+		if (now_ptr->node_type == EdgeJSON_object) //æ‰“å°å¯¹è±¡å¹¶è¿›å­—ç¬¦ä¸²
 		{
 			temp += PrintObject(now_ptr);
 		}
-		if (now_ptr->node_type == EdgeJSON_array)		//´òÓ¡Êı×é²¢½ø×Ö·û´®
+		if (now_ptr->node_type == EdgeJSON_array) //æ‰“å°æ•°ç»„å¹¶è¿›å­—ç¬¦ä¸²
 		{
 			temp += PrintArray(now_ptr);
 		}
 		if ((now_ptr->node_type == EdgeJSON_int) || (now_ptr->node_type == EdgeJSON_double) ||
 			(now_ptr->node_type == EdgeJSON_string) || (now_ptr->node_type == EdgeJSON_bool) ||
-			now_ptr->node_type == EdgeJSON_null)		//´òÓ¡ÊıÖµ
+			now_ptr->node_type == EdgeJSON_null) //æ‰“å°æ•°å€¼
 		{
 			temp += PrintKeyvalue(now_ptr);
 		}
-		if (now_ptr->brother != nullptr)		//µ±Ç°½ÚµãÈôÓĞĞÖµÜ½ÚµãÔò½«ĞÖµÜ½ÚµãÖ¸Õë¸³Óèµ±Ç°½Úµã
+		if (now_ptr->brother != nullptr) //å½“å‰èŠ‚ç‚¹è‹¥æœ‰å…„å¼ŸèŠ‚ç‚¹åˆ™å°†å…„å¼ŸèŠ‚ç‚¹æŒ‡é’ˆèµ‹äºˆå½“å‰èŠ‚ç‚¹
 		{
-			now_ptr = now_ptr->brother;			//¸üĞÂµ±Ç°½ÚµãÖ¸Ïòºó,ÔÙ´ÎÖ´ĞĞÑ­»·Ìå
-			temp += ",";						//¼Ó¸ö¶ººÅ
+			now_ptr = now_ptr->brother; //æ›´æ–°å½“å‰èŠ‚ç‚¹æŒ‡å‘å,å†æ¬¡æ‰§è¡Œå¾ªç¯ä½“
+			temp += ",";				//åŠ ä¸ªé€—å·
 		}
 		else
 		{
-			break;								//Èç¹ûÃ»ÓĞĞÖµÜ½ÚµãÔòÍË³öÑ­»·
+			break; //å¦‚æœæ²¡æœ‰å…„å¼ŸèŠ‚ç‚¹åˆ™é€€å‡ºå¾ªç¯
 		}
 	}
-	return temp;			//·µ»Ø×Ö·û´®
+	return temp; //è¿”å›å­—ç¬¦ä¸²
 }
 
 string EdgeJSON::PrintObject(Node *now_ptr)
 {
 	string temp;
-	if (now_ptr->key != "")		//¶ÔÏó½Úµã·ÖÓĞÎŞ¼üÃû³ÆÁ½ÖÖ
+	if (now_ptr->key != "") //å¯¹è±¡èŠ‚ç‚¹åˆ†æœ‰æ— é”®åç§°ä¸¤ç§
 	{
 		temp += "\"";
-		temp += now_ptr->key;			//ÓĞ¼üÃû³ÆµÄ´¦Àí
+		temp += now_ptr->key; //æœ‰é”®åç§°çš„å¤„ç†
 		temp += "\"";
 		temp += ":{";
 	}
 	else
 	{
-		temp += "{";					//ÎŞ¼üÃû³ÆµÄ´¦Àí
+		temp += "{"; //æ— é”®åç§°çš„å¤„ç†
 	}
-	if (now_ptr->son != nullptr)		//Èôµ±Ç°½ÚµãÓĞ×Ó½Úµã,Ôò½øĞĞµİ¹éµ÷ÓÃ
+	if (now_ptr->son != nullptr) //è‹¥å½“å‰èŠ‚ç‚¹æœ‰å­èŠ‚ç‚¹,åˆ™è¿›è¡Œé€’å½’è°ƒç”¨
 	{
-		temp += TraversalPrint(now_ptr->son);						
+		temp += TraversalPrint(now_ptr->son);
 	}
-	temp += "}";						//×Ó½Úµã´¦ÀíÍê±Ï,¼ÓÒ»¸ö}±ÕºÏ¶ÔÏó
-	return temp;						//·µ»Ø´¦ÀíÍê±ÏµÄ×Ö·û´®
+	temp += "}"; //å­èŠ‚ç‚¹å¤„ç†å®Œæ¯•,åŠ ä¸€ä¸ª}é—­åˆå¯¹è±¡
+	return temp; //è¿”å›å¤„ç†å®Œæ¯•çš„å­—ç¬¦ä¸²
 }
 
 string EdgeJSON::PrintArray(Node *now_ptr)
 {
-	string temp;				//Ëã·¨Óë´òÓ¡¶ÔÏóÀàËÆ
+	string temp; //ç®—æ³•ä¸æ‰“å°å¯¹è±¡ç±»ä¼¼
 	if (now_ptr->key != "")
 	{
 		temp += "\"";
@@ -407,7 +407,7 @@ string EdgeJSON::PrintArray(Node *now_ptr)
 
 string EdgeJSON::PrintKeyvalue(Node *now_ptr)
 {
-	string temp;			//½«¼üÃû³Æ²¢½ø×Ö·û´®
+	string temp; //å°†é”®åç§°å¹¶è¿›å­—ç¬¦ä¸²
 	if (now_ptr->key != "")
 	{
 		temp += "\"";
@@ -416,10 +416,10 @@ string EdgeJSON::PrintKeyvalue(Node *now_ptr)
 		temp += ":";
 	}
 	ostringstream os;
-	switch (now_ptr->node_type)		//¸ù¾İ½ÚµãµÄÖµÀàĞÍÈ¡³öÏàÓ¦Öµ²¢½ø×Ö·û´®
+	switch (now_ptr->node_type) //æ ¹æ®èŠ‚ç‚¹çš„å€¼ç±»å‹å–å‡ºç›¸åº”å€¼å¹¶è¿›å­—ç¬¦ä¸²
 	{
 	case EdgeJSON_int:
-		temp += to_string(now_ptr->value_int);		//to_stringÓÃÓÚ½«ÆäËûÊı¾İÀàĞÍ×ª»»³É×Ö·û´®
+		temp += to_string(now_ptr->value_int); //to_stringç”¨äºå°†å…¶ä»–æ•°æ®ç±»å‹è½¬æ¢æˆå­—ç¬¦ä¸²
 		break;
 	case EdgeJSON_double:
 		os << now_ptr->value_dou;
@@ -427,11 +427,11 @@ string EdgeJSON::PrintKeyvalue(Node *now_ptr)
 		break;
 	case EdgeJSON_string:
 		temp += "\"";
-		temp += now_ptr->value_str;		//×Ö·û´®ÖµÒª¼ÓË«ÒıºÅ
+		temp += now_ptr->value_str; //å­—ç¬¦ä¸²å€¼è¦åŠ åŒå¼•å·
 		temp += "\"";
 		break;
 	case EdgeJSON_bool:
-		if (now_ptr->value_boo == true)		//½«²¼¶ûĞÍ×ª»»³É×Ö·û´®
+		if (now_ptr->value_boo == true) //å°†å¸ƒå°”å‹è½¬æ¢æˆå­—ç¬¦ä¸²
 		{
 			temp += "true";
 		}
@@ -443,54 +443,56 @@ string EdgeJSON::PrintKeyvalue(Node *now_ptr)
 	case EdgeJSON_null:
 		temp += "null";
 		break;
+	default:
+		break;
 	}
-	return temp;			//·µ»Ø×Ö·û´®
+	return temp; //è¿”å›å­—ç¬¦ä¸²
 }
 
 bool EdgeJSON::TraversalDelete(Node *nownode_ptr)
 {
-	if (nownode_ptr->son != nullptr)				//ÅĞ¶ÏÊÇ·ñÓĞ×Ó½Úµã
+	if (nownode_ptr->son != nullptr) //åˆ¤æ–­æ˜¯å¦æœ‰å­èŠ‚ç‚¹
 	{
-		if (TraversalDelete(nownode_ptr->son))		//É¾³ı×Ó½Úµã
+		if (TraversalDelete(nownode_ptr->son)) //åˆ é™¤å­èŠ‚ç‚¹
 		{
-			nownode_ptr->son = nullptr;				//½«Ö¸Ïò×Ó½ÚµãµÄÖ¸ÕëÖÃ¿Õ
+			nownode_ptr->son = nullptr; //å°†æŒ‡å‘å­èŠ‚ç‚¹çš„æŒ‡é’ˆç½®ç©º
 		}
 	}
-	if (nownode_ptr->brother != nullptr)			//ÅĞ¶ÏÊÇ·ñÓĞĞÖµÜ½Úµã
+	if (nownode_ptr->brother != nullptr) //åˆ¤æ–­æ˜¯å¦æœ‰å…„å¼ŸèŠ‚ç‚¹
 	{
-		if (TraversalDelete(nownode_ptr->brother))	//É¾³ı×Ó½Úµã
+		if (TraversalDelete(nownode_ptr->brother)) //åˆ é™¤å­èŠ‚ç‚¹
 		{
-			nownode_ptr->brother = nullptr;			//½«Ö¸ÏòĞÖµÜ½ÚµãµÄÖ¸ÕëÖÃ¿Õ
+			nownode_ptr->brother = nullptr; //å°†æŒ‡å‘å…„å¼ŸèŠ‚ç‚¹çš„æŒ‡é’ˆç½®ç©º
 		}
 	}
 	if ((nownode_ptr->son == nullptr) && (nownode_ptr->brother == nullptr))
 	{
-		delete nownode_ptr;			//Èôµ±Ç°½Úµã²»ÔÙÓĞ×Ó½ÚµãºÍĞÖµÜ½Úµã,ÔòÉ¾³ıµ±Ç°½Úµã
-		return true;				//·µ»ØÉ¾³ı³É¹¦
+		delete nownode_ptr; //è‹¥å½“å‰èŠ‚ç‚¹ä¸å†æœ‰å­èŠ‚ç‚¹å’Œå…„å¼ŸèŠ‚ç‚¹,åˆ™åˆ é™¤å½“å‰èŠ‚ç‚¹
+		return true;		//è¿”å›åˆ é™¤æˆåŠŸ
 	}
-	return false;					//·ñÔò·µ»ØÉ¾³ıÊ§°Ü
+	return false; //å¦åˆ™è¿”å›åˆ é™¤å¤±è´¥
 }
 
-Node * EdgeJSON::LayerParse(string words)
+Node *EdgeJSON::LayerParse(string words)
 {
-	vector<token *>tokenarray;		//´æ´¢¸÷¸ö´ÊËØ¶ÔÏóµÄÖ¸Õë
-	Node *bynode_ptr = nullptr;		//µ±Ç°Ò»²ã½á¹¹µÄ¹ÒÔØµã,±ãÓÚ¹ÒÔØµ½ÉÏÒ»²ã
-	Node *temp_ptr = nullptr;		//±¾²ã½ÚµãµÄÁÙÊ±¹ÒÔØµã,±ãÓÚ±¾²ã½Úµã×é³ÉÁ´±í
-	Lexing(tokenarray, words);		//µ÷ÓÃ´Ê·¨·ÖÎöÆ÷,Éú³É´ÊËØ
-	for (int i = 0; i < tokenarray.size(); i++)		
+	vector<token *> tokenarray; //å­˜å‚¨å„ä¸ªè¯ç´ å¯¹è±¡çš„æŒ‡é’ˆ
+	Node *bynode_ptr = nullptr; //å½“å‰ä¸€å±‚ç»“æ„çš„æŒ‚è½½ç‚¹,ä¾¿äºæŒ‚è½½åˆ°ä¸Šä¸€å±‚
+	Node *temp_ptr = nullptr;   //æœ¬å±‚èŠ‚ç‚¹çš„ä¸´æ—¶æŒ‚è½½ç‚¹,ä¾¿äºæœ¬å±‚èŠ‚ç‚¹ç»„æˆé“¾è¡¨
+	Lexing(tokenarray, words);  //è°ƒç”¨è¯æ³•åˆ†æå™¨,ç”Ÿæˆè¯ç´ 
+	for (int i = 0; i < tokenarray.size(); i++)
 	{
-		switch (tokenarray[i]->token_type)		//Õë¶Ô¸÷¸ö´ÊËØÀàĞÍµ÷ÓÃÏàÓ¦·½·¨´´½¨½Úµã
+		switch (tokenarray[i]->token_type) //é’ˆå¯¹å„ä¸ªè¯ç´ ç±»å‹è°ƒç”¨ç›¸åº”æ–¹æ³•åˆ›å»ºèŠ‚ç‚¹
 		{
 		case EdgeJSON_object:
-			if (i == 0)			//Èç¹ûÊÇ±¾²ãÊ×½Úµã,Ôò½«·½·¨·µ»ØµÄ½ÚµãÖ¸Õë¹ÒÔØµ½bynode_ptr
+			if (i == 0) //å¦‚æœæ˜¯æœ¬å±‚é¦–èŠ‚ç‚¹,åˆ™å°†æ–¹æ³•è¿”å›çš„èŠ‚ç‚¹æŒ‡é’ˆæŒ‚è½½åˆ°bynode_ptr
 			{
-				bynode_ptr = ParseObject(tokenarray[0]->token_str);		//´«Èë´ÊËØÄÚÈİ
-				temp_ptr = bynode_ptr;			//½«·½·¨·µ»ØµÄ½ÚµãÖ¸Õë´æÈëÁÙÊ±¹ÒÔØµã
+				bynode_ptr = ParseObject(tokenarray[0]->token_str); //ä¼ å…¥è¯ç´ å†…å®¹
+				temp_ptr = bynode_ptr;								//å°†æ–¹æ³•è¿”å›çš„èŠ‚ç‚¹æŒ‡é’ˆå­˜å…¥ä¸´æ—¶æŒ‚è½½ç‚¹
 			}
 			else
 			{
-				temp_ptr->brother = ParseObject(tokenarray[i]->token_str);		//·ÇÊ×½ÚµãÔòÒÔĞÖµÜ½ÚµãÉí·İ¹ÒÔØµ½ÁÙÊ±¹ÒÔØµã
-				temp_ptr = temp_ptr->brother;	//½«·½·¨·µ»ØµÄ½ÚµãÖ¸Õë´æÈëÁÙÊ±¹ÒÔØµã
+				temp_ptr->brother = ParseObject(tokenarray[i]->token_str); //éé¦–èŠ‚ç‚¹åˆ™ä»¥å…„å¼ŸèŠ‚ç‚¹èº«ä»½æŒ‚è½½åˆ°ä¸´æ—¶æŒ‚è½½ç‚¹
+				temp_ptr = temp_ptr->brother;							   //å°†æ–¹æ³•è¿”å›çš„èŠ‚ç‚¹æŒ‡é’ˆå­˜å…¥ä¸´æ—¶æŒ‚è½½ç‚¹
 			}
 			break;
 		case EdgeJSON_array:
@@ -565,142 +567,142 @@ Node * EdgeJSON::LayerParse(string words)
 				temp_ptr = temp_ptr->brother;
 			}
 			break;
-		case EdgeJSON_layer:			//´ÊËØÎªlayerÀàĞÍÔòÖ±½Ó½«·½·¨·µ»ØµÄ½ÚµãÒÔ×Ó½ÚµãÉí·İ¹ÒÔØµ½ÁÙÊ±¹ÒÔØµã
-			temp_ptr->son = LayerParse(tokenarray[i]->token_str);	
+		case EdgeJSON_layer: //è¯ç´ ä¸ºlayerç±»å‹åˆ™ç›´æ¥å°†æ–¹æ³•è¿”å›çš„èŠ‚ç‚¹ä»¥å­èŠ‚ç‚¹èº«ä»½æŒ‚è½½åˆ°ä¸´æ—¶æŒ‚è½½ç‚¹
+			temp_ptr->son = LayerParse(tokenarray[i]->token_str);
+			break;
+		default:
 			break;
 		}
-		delete tokenarray[i];		//Ã¿´¦ÀíÒ»¸ö´ÊËØºóÊÍ·Å´ÊËØËùÕ¼ÄÚ´æ
+		delete tokenarray[i]; //æ¯å¤„ç†ä¸€ä¸ªè¯ç´ åé‡Šæ”¾è¯ç´ æ‰€å å†…å­˜
 	}
-	return bynode_ptr;		//·µ»Ø±¾²ã½á¹¹¹ÒÔØµã
+	return bynode_ptr; //è¿”å›æœ¬å±‚ç»“æ„æŒ‚è½½ç‚¹
 }
 
-void EdgeJSON::Lexing(vector<token*>&tokenarray, string &words)
+void EdgeJSON::Lexing(vector<token *> &tokenarray, string &words)
 {
-	tokenarray.push_back(new token);		//ĞÂ½¨´ÊËØ
-	int flag = 0, flag_one = 0, count = 0;	//ÉùÃ÷±êÖ¾±äÁ¿Óë¼ÆÊıÆ÷±äÁ¿
-	for (int i = 0; i < words.size(); i++)	
+	tokenarray.push_back(new token);	   //æ–°å»ºè¯ç´ 
+	int flag = 0, flag_one = 0, count = 0; //å£°æ˜æ ‡å¿—å˜é‡ä¸è®¡æ•°å™¨å˜é‡
+	for (int i = 0; i < words.size(); i++)
 	{
-		tokenarray[count]->token_str += words[i];	//½«¶ÁÈ¡µ½µÄ×Ö·û´æÈë´ÊËØ
-		if ((words[0] != '{') && (words[0] != '['))		//´«Èë×Ö·û´®Ê××Ö·û²»ÊÇ{ºÍ[Ê±Ö´ĞĞÒıºÅ³É¶ÔÊ¶±ğ
+		tokenarray[count]->token_str += words[i];   //å°†è¯»å–åˆ°çš„å­—ç¬¦å­˜å…¥è¯ç´ 
+		if ((words[0] != '{') && (words[0] != '[')) //ä¼ å…¥å­—ç¬¦ä¸²é¦–å­—ç¬¦ä¸æ˜¯{å’Œ[æ—¶æ‰§è¡Œå¼•å·æˆå¯¹è¯†åˆ«
 		{
-			if (words[i] == '\"')		//Óöµ½ÒıºÅ,±êÖ¾¼Ó1
+			if (words[i] == '\"') //é‡åˆ°å¼•å·,æ ‡å¿—åŠ 1
 			{
 				flag_one++;
 			}
-			if (words[i + 1] == ',')	//Èç¹ûÏÂÒ»¸ö×Ö·ûÊÇ¶ººÅ
+			if (words[i + 1] == ',') //å¦‚æœä¸‹ä¸€ä¸ªå­—ç¬¦æ˜¯é€—å·
 			{
-				if ((flag == 0) && (flag_one % 2 == 0))		//flag=0ËµÃ÷¶ººÅ²»ÔÚµ±Ç°ÕıÔÚÌáÈ¡µÄ´ÊËØÄÚ
-				{											//flag_oneÎªÅ¼ËµÃ÷¶ººÅ²»ÔÚµ±Ç°ÕıÔÚÌáÈ¡µÄ´ÊËØÖĞµÄÒıºÅ¶ÔÖ®ÖĞ
-					tokenarray.push_back(new token);		//Ìõ¼şÂú×ãÊ±½øĞĞÏÂÒ»´ÊËØµÄÌáÈ¡
+				if ((flag == 0) && (flag_one % 2 == 0)) //flag=0è¯´æ˜é€—å·ä¸åœ¨å½“å‰æ­£åœ¨æå–çš„è¯ç´ å†…
+				{										//flag_oneä¸ºå¶è¯´æ˜é€—å·ä¸åœ¨å½“å‰æ­£åœ¨æå–çš„è¯ç´ ä¸­çš„å¼•å·å¯¹ä¹‹ä¸­
+					tokenarray.push_back(new token);	//æ¡ä»¶æ»¡è¶³æ—¶è¿›è¡Œä¸‹ä¸€è¯ç´ çš„æå–
 					count++;
-					i++;			//Ìø¹ı¶ººÅ
+					i++; //è·³è¿‡é€—å·
 				}
 			}
 		}
 		if ((words[i] == '{') || (words[i] == '['))
 		{
-			if (flag == 0)		//flag=0ËµÃ÷{»ò[²»ÔÚµ±Ç°ÕıÔÚÌáÈ¡µÄ´ÊËØÄÚ
+			if (flag == 0) //flag=0è¯´æ˜{æˆ–[ä¸åœ¨å½“å‰æ­£åœ¨æå–çš„è¯ç´ å†…
 			{
-				if (words[i] == '{')	//ÌáÈ¡Ò»¸ö¶ÔÏó´ÊËØ
+				if (words[i] == '{') //æå–ä¸€ä¸ªå¯¹è±¡è¯ç´ 
 				{
 					tokenarray[count]->token_type = EdgeJSON_object;
 				}
-				if (words[i] == '[')	//ÌáÈ¡Ò»¸öÊı×é´ÊËØ
+				if (words[i] == '[') //æå–ä¸€ä¸ªæ•°ç»„è¯ç´ 
 				{
 					tokenarray[count]->token_type = EdgeJSON_array;
 				}
-				tokenarray.push_back(new token);	//flag=0Ê±½øĞĞÏÂÒ»´ÊËØµÄÌáÈ¡
+				tokenarray.push_back(new token); //flag=0æ—¶è¿›è¡Œä¸‹ä¸€è¯ç´ çš„æå–
 				count++;
 			}
-			flag++;			//Óöµ½{»ò[,±êÖ¾¼Ó1
+			flag++; //é‡åˆ°{æˆ–[,æ ‡å¿—åŠ 1
 		}
 		if ((words[i + 1] == '}') || (words[i + 1] == ']'))
 		{
-			flag--;			//Óöµ½}»ò],±êÖ¾¼õ1
-			if (flag == 0)		//flag=0ËµÃ÷ÕıÔÚÌáÈ¡µÄ´ÊËØµÄÌáÈ¡¹ı³ÌÒÑ½áÊø
+			flag--;		   //é‡åˆ°}æˆ–],æ ‡å¿—å‡1
+			if (flag == 0) //flag=0è¯´æ˜æ­£åœ¨æå–çš„è¯ç´ çš„æå–è¿‡ç¨‹å·²ç»“æŸ
 			{
-				tokenarray[count]->token_type = EdgeJSON_layer;		//¸³Óè´ÊËØÀàĞÍ
-				if (words.size() - 1 != i + 1)		
+				tokenarray[count]->token_type = EdgeJSON_layer; //èµ‹äºˆè¯ç´ ç±»å‹
+				if (words.size() - 1 != i + 1)
 				{
-					tokenarray.push_back(new token);	//Èç¹û×Ö·û´®Ã»ÓĞ¶ÁÈ¡Íê±Ï,¼ÌĞø´´½¨´ÊËØ´æ´¢¿Õ¼ä
+					tokenarray.push_back(new token); //å¦‚æœå­—ç¬¦ä¸²æ²¡æœ‰è¯»å–å®Œæ¯•,ç»§ç»­åˆ›å»ºè¯ç´ å­˜å‚¨ç©ºé—´
 					count++;
 				}
-				if (words[i + 2] == ',')	//ÏÂÏÂÒ»¸ö×Ö·ûÊÇ¶ººÅ,ÔòÌø¹ıÒ»¸ö×Ö·û
+				if (words[i + 2] == ',') //ä¸‹ä¸‹ä¸€ä¸ªå­—ç¬¦æ˜¯é€—å·,åˆ™è·³è¿‡ä¸€ä¸ªå­—ç¬¦
 				{
 					i++;
 				}
-				i++;			//Ìø¹ı}»ò]
+				i++; //è·³è¿‡}æˆ–]
 			}
 		}
 	}
 	for (int i = 0; i < tokenarray.size(); i++)
 	{
-		if (tokenarray[i]->token_type == EdgeJSON_void)		//¶ÔÎ´¸³ÓèÀàĞÍµÄ´ÊËØ½øĞĞ´ÊËØ¸³Óè
+		if (tokenarray[i]->token_type == EdgeJSON_void) //å¯¹æœªèµ‹äºˆç±»å‹çš„è¯ç´ è¿›è¡Œè¯ç´ èµ‹äºˆ
 		{
-			int j, k = 1;		//Ñ­»·±äÁ¿
+			int j, k = 1; //å¾ªç¯å˜é‡
 			for (j = 0; j < tokenarray[i]->token_str.size(); j++)
 			{
-				if (tokenarray[i]->token_str[j] == ':')		//Èç¹û´ÊËØÄÚÈİÓĞÃ°ºÅÔò½«±êÖ¾ÖÃ1
+				if (tokenarray[i]->token_str[j] == ':') //å¦‚æœè¯ç´ å†…å®¹æœ‰å†’å·åˆ™å°†æ ‡å¿—ç½®1
 				{
 					flag = 1;
-					break;		//ÍË³öÑ­»·
+					break; //é€€å‡ºå¾ªç¯
 				}
 			}
-			if (flag == 1)		//ÓĞÃ°ºÅÊÇ¼üÖµ¶ÔÊı×Ö,ÎŞÔòÊÇÊı×éÔªËØÊı×Ö
+			if (flag == 1) //æœ‰å†’å·æ˜¯é”®å€¼å¯¹æ•°å­—,æ— åˆ™æ˜¯æ•°ç»„å…ƒç´ æ•°å­—
 			{
-				k = j + 2;		//ÓĞÃ°ºÅÔò¸øk¸³Öµj+2
+				k = j + 2; //æœ‰å†’å·åˆ™ç»™kèµ‹å€¼j+2
 			}
 			else
 			{
-				j = -1;			//ÎŞÃ°ºÅÊ±¸øj¸³ÖµÎª-1
+				j = -1; //æ— å†’å·æ—¶ç»™jèµ‹å€¼ä¸º-1
 			}
-			if (((tokenarray[i]->token_str[j + 1] >= '0') && (tokenarray[i]->token_str[j + 1] <= '9'))
-				|| (tokenarray[i]->token_str[j + 1] == '-'))	//ÓĞÃ°ºÅ,j+1ÔòÊÇÅĞ¶ÏÃ°ºÅºóµÄ×Ö·û
-			{													//ÎŞÃ°ºÅ,j+1ÔòÊÇÅĞ¶ÏÊ××Ö·û
-				for (k; k < tokenarray[i]->token_str.size(); k++)	//ÓĞÃ°ºÅ,k=j+2ÊÇ´ÓÃ°ºÅºóµÚ¶ş¸ö×Ö·û¿ªÊ¼¼ì²â
-				{													//ÎŞÃ°ºÅ,k=1ÊÇ´ÓÊ××Ö·ûµÄÏÂÒ»¸ö×Ö·û¿ªÊ¼¼ì²â
-					if ((tokenarray[i]->token_str[k] == '.')|| (tokenarray[i]->token_str[k] == 'e') 
-						|| (tokenarray[i]->token_str[k] == 'E'))
+			if (((tokenarray[i]->token_str[j + 1] >= '0') && (tokenarray[i]->token_str[j + 1] <= '9')) || (tokenarray[i]->token_str[j + 1] == '-')) //æœ‰å†’å·,j+1åˆ™æ˜¯åˆ¤æ–­å†’å·åçš„å­—ç¬¦
+			{																																		//æ— å†’å·,j+1åˆ™æ˜¯åˆ¤æ–­é¦–å­—ç¬¦
+				for (; k < tokenarray[i]->token_str.size(); k++)																					//æœ‰å†’å·,k=j+2æ˜¯ä»å†’å·åç¬¬äºŒä¸ªå­—ç¬¦å¼€å§‹æ£€æµ‹
+				{																																	//æ— å†’å·,k=1æ˜¯ä»é¦–å­—ç¬¦çš„ä¸‹ä¸€ä¸ªå­—ç¬¦å¼€å§‹æ£€æµ‹
+					if ((tokenarray[i]->token_str[k] == '.') || (tokenarray[i]->token_str[k] == 'e') || (tokenarray[i]->token_str[k] == 'E'))
 					{
-						tokenarray[i]->token_type = EdgeJSON_double;		//ÓĞĞ¡Êıµã»òÕßÖ¸Êı·ûºÅµÄÊÇdouble
+						tokenarray[i]->token_type = EdgeJSON_double; //æœ‰å°æ•°ç‚¹æˆ–è€…æŒ‡æ•°ç¬¦å·çš„æ˜¯double
 					}
 				}
 				if (tokenarray[i]->token_type == EdgeJSON_void)
 				{
-					tokenarray[i]->token_type = EdgeJSON_int;	//´Ë´úÂë¿éÖ»´¦ÀíÊı×Ö,·Çdouble¼´int
+					tokenarray[i]->token_type = EdgeJSON_int; //æ­¤ä»£ç å—åªå¤„ç†æ•°å­—,édoubleå³int
 				}
 			}
 			if (tokenarray[i]->token_str[j + 1] == '\"')
 			{
-				tokenarray[i]->token_type = EdgeJSON_string;		//Ã°ºÅºó»ò´ÊËØÊ××Ö·ûÊÇÒıºÅÔò¸³Óè´ÊËØstringÀàĞÍ
+				tokenarray[i]->token_type = EdgeJSON_string; //å†’å·åæˆ–è¯ç´ é¦–å­—ç¬¦æ˜¯å¼•å·åˆ™èµ‹äºˆè¯ç´ stringç±»å‹
 			}
 			if ((tokenarray[i]->token_str[j + 1] == 't') || (tokenarray[i]->token_str[j + 1] == 'f'))
 			{
-				tokenarray[i]->token_type = EdgeJSON_bool;	//Ã°ºÅºó»ò´ÊËØÊ××Ö·ûÊÇt»òfÔò¸³Óè´ÊËØboolÀàĞÍ	
+				tokenarray[i]->token_type = EdgeJSON_bool; //å†’å·åæˆ–è¯ç´ é¦–å­—ç¬¦æ˜¯tæˆ–fåˆ™èµ‹äºˆè¯ç´ boolç±»å‹
 			}
 			if (tokenarray[i]->token_str[j + 1] == 'n')
 			{
-				tokenarray[i]->token_type = EdgeJSON_null;	//Ã°ºÅºó»ò´ÊËØÊ××Ö·ûÊÇnÔò¸³Óè´ÊËØnullÀàĞÍ
+				tokenarray[i]->token_type = EdgeJSON_null; //å†’å·åæˆ–è¯ç´ é¦–å­—ç¬¦æ˜¯nåˆ™èµ‹äºˆè¯ç´ nullç±»å‹
 			}
 		}
 	}
 }
 
-Node * EdgeJSON::ParseObject(string token_str)
+Node *EdgeJSON::ParseObject(string token_str)
 {
-	Node *return_ptr = new Node;	//´´½¨Ò»¸öĞÂ½Úµã
-	return_ptr->node_type = EdgeJSON_object;		//¸³Óè½ÚµãÀàĞÍ
-	if (token_str[0] == '\"')		//´ÊËØÊ××Ö·ûÊÇÒıºÅÔòÌáÈ¡¼üÃû³Æ
+	Node *return_ptr = new Node;			 //åˆ›å»ºä¸€ä¸ªæ–°èŠ‚ç‚¹
+	return_ptr->node_type = EdgeJSON_object; //èµ‹äºˆèŠ‚ç‚¹ç±»å‹
+	if (token_str[0] == '\"')				 //è¯ç´ é¦–å­—ç¬¦æ˜¯å¼•å·åˆ™æå–é”®åç§°
 	{
-		for (int i = 1; token_str[i] != '\"'; i++)		//Èç¹ûÏÂÒ»×Ö·ûÊÇÒıºÅÔòÌáÈ¡Íê±Ï
+		for (int i = 1; token_str[i] != '\"'; i++) //å¦‚æœä¸‹ä¸€å­—ç¬¦æ˜¯å¼•å·åˆ™æå–å®Œæ¯•
 		{
 			return_ptr->key += token_str[i];
 		}
 	}
-	return return_ptr;		//·µ»Ø½ÚµãÖ¸Õë
+	return return_ptr; //è¿”å›èŠ‚ç‚¹æŒ‡é’ˆ
 }
 
-Node * EdgeJSON::ParseArray(string token_str)
+Node *EdgeJSON::ParseArray(string token_str)
 {
 	Node *return_ptr = new Node;
 	return_ptr->node_type = EdgeJSON_array;
@@ -714,45 +716,44 @@ Node * EdgeJSON::ParseArray(string token_str)
 	return return_ptr;
 }
 
-Node * EdgeJSON::ParseInt(string token_str)
+Node *EdgeJSON::ParseInt(string token_str)
 {
 	Node *return_ptr = new Node;
-	string temp;		//ÁÙÊ±´æ·Å×Ö·û
+	string temp; //ä¸´æ—¶å­˜æ”¾å­—ç¬¦
 	int e_flag = 0;
 	return_ptr->node_type = EdgeJSON_int;
-	if (token_str[0] == '\"')		//´ÊËØÊ××Ö·ûÊÇÒıºÅÔòÌáÈ¡¼üÃû³Æ
+	if (token_str[0] == '\"') //è¯ç´ é¦–å­—ç¬¦æ˜¯å¼•å·åˆ™æå–é”®åç§°
 	{
 		for (int i = 1; token_str[i] != '\"'; i++)
 		{
 			return_ptr->key += token_str[i];
 		}
 	}
-	for (int i = 0; i < token_str.size(); i++)		//Ñ­»·ÌáÈ¡ÓĞĞ§×Ö·û
+	for (int i = 0; i < token_str.size(); i++) //å¾ªç¯æå–æœ‰æ•ˆå­—ç¬¦
 	{
-		if (token_str[i] == ':')	//´ÊËØÄÚÈİÈç¹ûÓĞÃ°ºÅÔòÌáÈ¡Ã°ºÅºóµÄÊı×Ö×Ö·û
+		if (token_str[i] == ':') //è¯ç´ å†…å®¹å¦‚æœæœ‰å†’å·åˆ™æå–å†’å·åçš„æ•°å­—å­—ç¬¦
 		{
 			for (int j = i + 1; j < token_str.size(); j++)
 			{
-				temp += token_str[j];		//´æÈëtemp
+				temp += token_str[j]; //å­˜å…¥temp
 			}
-			break;			//ÌáÈ¡Íê±ÏÔòÍË³öÑ­»·
+			break; //æå–å®Œæ¯•åˆ™é€€å‡ºå¾ªç¯
 		}
-		if (((token_str[0] >= '0') && (token_str[0] <= '9'))
-			|| (token_str[0] == '-'))		//´ÊËØÊ××Ö·ûÊÇÊı×ÖÔòÖ±½ÓÌáÈ¡Êı×Ö
+		if (((token_str[0] >= '0') && (token_str[0] <= '9')) || (token_str[0] == '-')) //è¯ç´ é¦–å­—ç¬¦æ˜¯æ•°å­—åˆ™ç›´æ¥æå–æ•°å­—
 		{
 			for (int i = 0; i < token_str.size(); i++)
 			{
 				temp += token_str[i];
 			}
-			break;			//ÌáÈ¡Íê±ÏºóÍË³öÑ­»·
+			break; //æå–å®Œæ¯•åé€€å‡ºå¾ªç¯
 		}
 	}
 	stringstream ss(temp);
-	ss >> return_ptr->value_int;		//½«tempÄÚµÄÊı×Ö×Ö·û×ª»»Îªint
+	ss >> return_ptr->value_int; //å°†tempå†…çš„æ•°å­—å­—ç¬¦è½¬æ¢ä¸ºint
 	return return_ptr;
 }
 
-Node * EdgeJSON::ParseDouble(string token_str)
+Node *EdgeJSON::ParseDouble(string token_str)
 {
 	Node *return_ptr = new Node;
 	string temp;
@@ -774,8 +775,7 @@ Node * EdgeJSON::ParseDouble(string token_str)
 			}
 			break;
 		}
-		if (((token_str[0] >= '0') && (token_str[0] <= '9'))
-			|| (token_str[0] == '-'))
+		if (((token_str[0] >= '0') && (token_str[0] <= '9')) || (token_str[0] == '-'))
 		{
 			for (int i = 0; i < token_str.size(); i++)
 			{
@@ -785,34 +785,34 @@ Node * EdgeJSON::ParseDouble(string token_str)
 		}
 	}
 	stringstream ss(temp);
-	ss >> return_ptr->value_dou;	//½«tempÄÚµÄÊı×Ö×Ö·û×ª»»Îªdouble
+	ss >> return_ptr->value_dou; //å°†tempå†…çš„æ•°å­—å­—ç¬¦è½¬æ¢ä¸ºdouble
 	return return_ptr;
 }
 
-Node * EdgeJSON::ParseString(string token_str)
+Node *EdgeJSON::ParseString(string token_str)
 {
 	Node *return_ptr = new Node;
 	string temp;
 	return_ptr->node_type = EdgeJSON_string;
-	if (token_str[0] == '\"')		//ÌáÈ¡¼üÃû³Æ
+	if (token_str[0] == '\"') //æå–é”®åç§°
 	{
 		for (int i = 1; token_str[i] != '\"'; i++)
 		{
 			return_ptr->key += token_str[i];
-			if (i + 2 == token_str.size())		//Èç¹ûÃ°ºÅÊÇ´ÊËØÄÚÈİµÄÄ©Î²×Ö·ûÔò½«ÌáÈ¡µ½µÄ×Ö·û×ª´æµ½½Úµãvalue_strÖĞ
+			if (i + 2 == token_str.size()) //å¦‚æœå†’å·æ˜¯è¯ç´ å†…å®¹çš„æœ«å°¾å­—ç¬¦åˆ™å°†æå–åˆ°çš„å­—ç¬¦è½¬å­˜åˆ°èŠ‚ç‚¹value_strä¸­
 			{
 				return_ptr->value_str = return_ptr->key;
-				return_ptr->key = "";			//½«¼üÃû³ÆÖÃ¿Õ
+				return_ptr->key = ""; //å°†é”®åç§°ç½®ç©º
 			}
 		}
 	}
-	for (int i = 0;i<token_str.size(); i++)
+	for (int i = 0; i < token_str.size(); i++)
 	{
-		if (token_str[i] == ':')		//Èç¹ûÓöµ½Ã°ºÅÔòÌáÈ¡Ã°ºÅºóµÄ×Ö·û´®µ½value_str
+		if (token_str[i] == ':') //å¦‚æœé‡åˆ°å†’å·åˆ™æå–å†’å·åçš„å­—ç¬¦ä¸²åˆ°value_str
 		{
-			for (int j = i+1; token_str[j+1] != '\"'; j++)
+			for (int j = i + 1; token_str[j + 1] != '\"'; j++)
 			{
-				return_ptr->value_str += token_str[j+1];
+				return_ptr->value_str += token_str[j + 1];
 			}
 			break;
 		}
@@ -820,12 +820,12 @@ Node * EdgeJSON::ParseString(string token_str)
 	return return_ptr;
 }
 
-Node * EdgeJSON::ParseBool(string token_str)
+Node *EdgeJSON::ParseBool(string token_str)
 {
 	Node *return_ptr = new Node;
 	string temp;
 	return_ptr->node_type = EdgeJSON_bool;
-	if (token_str[0] == '\"')		//ÌáÈ¡¼üÃû³Æ
+	if (token_str[0] == '\"') //æå–é”®åç§°
 	{
 		for (int i = 1; token_str[i] != '\"'; i++)
 		{
@@ -836,73 +836,73 @@ Node * EdgeJSON::ParseBool(string token_str)
 	{
 		for (int i = 0; i < token_str.size(); i++)
 		{
-			temp += token_str[i];		//Èç¹û´ÊËØÊ××Ö·ûÊÇt»òfÔòÌáÈ¡×Ö·ûµ½temp
+			temp += token_str[i]; //å¦‚æœè¯ç´ é¦–å­—ç¬¦æ˜¯tæˆ–fåˆ™æå–å­—ç¬¦åˆ°temp
 		}
 	}
-	for (int i = 0; i<token_str.size(); i++)
+	for (int i = 0; i < token_str.size(); i++)
 	{
 		if (token_str[i] == ':')
 		{
 			for (int j = i + 1; j != token_str.size(); j++)
 			{
-				temp += token_str[j];	//Èç¹û´ÊËØÄÚÈİÓĞÃ°ºÅÔòÌáÈ¡Ã°ºÅºóµÄ×Ö·ûµ½temp
+				temp += token_str[j]; //å¦‚æœè¯ç´ å†…å®¹æœ‰å†’å·åˆ™æå–å†’å·åçš„å­—ç¬¦åˆ°temp
 			}
-			break;		//ÌáÈ¡Íê±ÏÍË³öÑ­»·
+			break; //æå–å®Œæ¯•é€€å‡ºå¾ªç¯
 		}
 	}
-	if (temp == "true")		//Èç¹ûtempÎªtrueÔò¸øvalue_boo¸³ÖµÎª1(½Úµã³õÊ¼»¯Ê±ÊÇ0)
+	if (temp == "true") //å¦‚æœtempä¸ºtrueåˆ™ç»™value_booèµ‹å€¼ä¸º1(èŠ‚ç‚¹åˆå§‹åŒ–æ—¶æ˜¯0)
 	{
 		return_ptr->value_boo = 1;
 	}
 	return return_ptr;
 }
 
-Node * EdgeJSON::ParseNull(string token_str)
+Node *EdgeJSON::ParseNull(string token_str)
 {
 	Node *return_ptr = new Node;
 	return_ptr->node_type = EdgeJSON_null;
-	if (token_str[0] == '\"')		//ÌáÈ¡¼üÃû³Æ
+	if (token_str[0] == '\"') //æå–é”®åç§°
 	{
 		for (int i = 1; token_str[i] != '\"'; i++)
 		{
 			return_ptr->key += token_str[i];
 		}
 	}
-	return_ptr->value_null = 0;		//nullÀàĞÍÖ±½ÓÖÃ0¼´¿É,´òÓ¡Ê±»áÊ¶±ğ½ÚµãÀàĞÍÖ±½Ó´òÓ¡null
+	return_ptr->value_null = 0; //nullç±»å‹ç›´æ¥ç½®0å³å¯,æ‰“å°æ—¶ä¼šè¯†åˆ«èŠ‚ç‚¹ç±»å‹ç›´æ¥æ‰“å°null
 	return return_ptr;
 }
 
-Node & GetNode(Node *now_ptr, const char *c)
+Node &GetNode(Node *now_ptr, const char *c)
 {
-	if (now_ptr == nullptr)			//ÅĞ¶Ïµ±Ç°½ÚµãÊÇ·ñ´æÔÚ
+	if (now_ptr == nullptr) //åˆ¤æ–­å½“å‰èŠ‚ç‚¹æ˜¯å¦å­˜åœ¨
 	{
-		return *now_ptr;			//Èôµ±Ç°½Úµã²»´æÔÚ,ÔòÍË³öº¯Êı
+		return *now_ptr; //è‹¥å½“å‰èŠ‚ç‚¹ä¸å­˜åœ¨,åˆ™é€€å‡ºå‡½æ•°
 	}
 	else
 	{
-		while (now_ptr->key == "")		//Öğ²ãÅĞ¶Ï,Ö±µ½ÕÒµ½Ò»¸ö¼üÃû³Æ²»Îª¿ÕµÄ½Úµã
+		while (now_ptr->key == "") //é€å±‚åˆ¤æ–­,ç›´åˆ°æ‰¾åˆ°ä¸€ä¸ªé”®åç§°ä¸ä¸ºç©ºçš„èŠ‚ç‚¹
 		{
 			now_ptr = now_ptr->son;
 		}
 		while (1)
 		{
-			if (now_ptr->key == c)			//Èô¼üÃû³ÆÆ¥Åä,Ôò·µ»Øµ±Ç°½Úµã
+			if (now_ptr->key == c) //è‹¥é”®åç§°åŒ¹é…,åˆ™è¿”å›å½“å‰èŠ‚ç‚¹
 			{
 				return *now_ptr;
 			}
-			if (now_ptr->brother == nullptr)	//Èôµ±Ç°½Úµã²»Æ¥ÅäÇÒ²»ÔÙÓĞĞÖµÜ½Úµã,ÔòÍË³öº¯Êı
+			if (now_ptr->brother == nullptr) //è‹¥å½“å‰èŠ‚ç‚¹ä¸åŒ¹é…ä¸”ä¸å†æœ‰å…„å¼ŸèŠ‚ç‚¹,åˆ™é€€å‡ºå‡½æ•°
 			{
 				return *now_ptr;
 			}
 			else
 			{
-				now_ptr = now_ptr->brother;		//Èôµ±Ç°½Úµã²»Æ¥ÅäÇÒÓĞĞÖµÜ½Úµã,ÔòÈ¡ĞÖµÜ½ÚµãÎªµ±Ç°½Úµã,¼ÌĞøÆ¥Åä
+				now_ptr = now_ptr->brother; //è‹¥å½“å‰èŠ‚ç‚¹ä¸åŒ¹é…ä¸”æœ‰å…„å¼ŸèŠ‚ç‚¹,åˆ™å–å…„å¼ŸèŠ‚ç‚¹ä¸ºå½“å‰èŠ‚ç‚¹,ç»§ç»­åŒ¹é…
 			}
 		}
 	}
 }
 
-Node & GetNode(Node *now_ptr, int i)
+Node &GetNode(Node *now_ptr, int i)
 {
 	if (now_ptr == nullptr)
 	{
@@ -910,11 +910,11 @@ Node & GetNode(Node *now_ptr, int i)
 	}
 	else
 	{
-		while (now_ptr->key != "")		//Öğ²ãÅĞ¶Ï,Ö±µ½ÕÒµ½Ò»¸ö¼üÃû³ÆÎª¿ÕµÄ½Úµã
+		while (now_ptr->key != "") //é€å±‚åˆ¤æ–­,ç›´åˆ°æ‰¾åˆ°ä¸€ä¸ªé”®åç§°ä¸ºç©ºçš„èŠ‚ç‚¹
 		{
 			now_ptr = now_ptr->son;
 		}
-		for (int counter = 1; counter < i; counter++)		//ÔÚµ±Ç°²ãÕÒµ½µÚi¸ö½Úµã²¢·µ»Ø
+		for (int counter = 1; counter < i; counter++) //åœ¨å½“å‰å±‚æ‰¾åˆ°ç¬¬iä¸ªèŠ‚ç‚¹å¹¶è¿”å›
 		{
 			now_ptr = now_ptr->brother;
 		}

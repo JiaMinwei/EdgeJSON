@@ -1,25 +1,25 @@
 /*
-EdgeJSON-Ðí¿ÉÐ­Òé
+EdgeJSON-è®¸å¯åè®®
 Copyright (c) 2018 Jiaminwei
 
-1.ÐòÑÔ:±¾Ð­ÒéÓÃÓÚ¹ÜÏ½ÓÃ»§¼°ÉÌÒµÊµÌå (ÒÔÏÂ¼ò³Æ£º±»Ðí¿ÉÈË) ºÍÈí¼þÔ­×÷Õß£¨ÒÔÏÂ¼ò³Æ£ºÐí¿É·½£©Ö®¼ä
-µÄ¹ØÏµ¡£Ê¹ÓÃ±¾Èí¼þ£¨°üÀ¨µ«²»ÏÞÓÚ¸´ÖÆ¡¢ÏÂÔØ¡¢°²×°¡¢ÔËÐÐ±¾Èí¼þ£©¼´ÊÓÎªÍ¬Òâ±¾Ð­Òé¡£±¾Ð­Òé¹æ¶¨ÁË
-Ê¹ÓÃÐí¿É·½´´½¨ºÍÓµÓÐµÄEdgeJSON (ÒÔÏÂ¼ò³Æ±¾Èí¼þ) µÄÌõ¿î¡¢È¨Àû¡¢ÏÞÖÆºÍÒåÎñ£¬ÏêÇéÈçÏÂ:
-2.Ðí¿ÉÖ¤ÊÚÓè:Ðí¿É·½ÌØ´ËÊÚÓè±»Ðí¿ÉÈË¸öÈË¸´ÖÆ¡¢·Ö·¢¡¢ÐÞ¸ÄÒÔ¼°·ÇÉÌÒµÐÔÊ¹ÓÃ±¾Èí¼þµÄÈ¨Àû(ÉÌÒµÊ¹ÓÃÇë
-  ÁªÏµÈí¼þÔ­×÷Õß)¡£
-3.±»Ðí¿ÉÈËÒåÎñ£º
-	3.1.ÔÚÑÓÉìµÄ´úÂëÖÐ£¨ÐÞ¸ÄºÍÓÉ±¾Èí¼þµÄÔ´´úÂëÑÜÉúµÄ´úÂëÖÐ£©±ØÐë°üº¬Ô­´úÂëÖÐµÄÐ­ÒéÓëÉùÃ÷¡£
-	3.2.Èô±»Ðí¿ÉÈËÐÞ¸ÄÁË´úÂë£¬Ôò±ØÐëÔÚ±»ÐÞ¸ÄµÄÎÄ¼þÖÐ×÷³öÏàÓ¦ËµÃ÷¡£
-4.ÊÜÏÞ:½ûÖ¹±»Ðí¿ÉÈËÒÔÉÌÒµ»òÓ¯ÀûÎªÄ¿µÄÊ¹ÓÃ±¾Èí¼þ»òÆäÑÜÉú×÷Æ·£¨°üÀ¨µ«²»ÏÞÓÚÐÞ¸Ä±¾Èí¼þ¡¢ÒÔ±¾Èí¼þÎª
-»ù´¡½øÐÐ¶þ´Î¿ª·¢¡¢µ÷ÓÃ±¾Èí¼þËù¶¨ÒåµÄ½Ó¿ÚµÈ£©¡£
-5.ÖÕÖ¹:
-	5.1.Èô±»Ðí¿ÉÈËÓÐÎ¥±¾Ð­ÒéÈÎÒ»Ìõ¿î¼´×Ô¶¯ÖÕÖ¹Ðí¿É¡£
-	5.2.Ðí¿É·½ÓÐÈ¨ÖÕÖ¹±¾Ð­Òé¼°¶Ô±»Ðí¿ÉÈËµÄÐí¿É¡£
-6.ÃâÔðÌõ¿î:ÔÚ·¨ÂÉÔÊÐíµÄ·¶Î§ÄÚ£¬Èí¼þÊÇ¸ù¾ÝÔ­ÑùÌá¹©µÄ¡£Ðí¿É·½²»Ó¦¶ÔÒò±¾Èí¼þµÄ²Ù×÷¡¢¹ÊÕÏ¡¢bug»ò±¾Èí
-¼þÓë±»Ðí¿É·½µÄ×îÖÕÉè±¸Ö®¼äµÄÈÎºÎÆäËû½»»¥¶øÕÐÖÂµÄÈÎºÎËðº¦¡¢·ÑÓÃ¡¢ÈÎºÎÆäËû¸¶¿î³Ðµ£ÔðÈÎ£¬´ËÍâ£¬ÔÚ
-ÒÀÀµ±¾Èí¼þ»òÊ¹ÓÃ±¾Èí¼þµÄÔ´´úÂëÊ±£¬ Ðí¿É·½²»Ó¦¶Ô±»Ðí¿É·½±àÐ´µÄÔ´´úÂëÖÐµÄÈÎºÎÈ±ÏÝ¸ºÔð¡£
-7.±£ÁôÈ¨Àû£ºÐí¿É·½ÓÐÈ¨ÐÞ¸Ä±¾Ð­ÒéÌõ¿î£¨Èô±»Ðí¿ÉÈË²»ÈÏÍ¬ÐÞ¸ÄºóµÄÐ­ÒéÌõ¿î£¬¿ÉÍ£Ö¹Ê¹ÓÃ±¾Èí¼þ£¬¼ÌÐøÊ¹
-ÓÃ¼´´ú±íÍ¬ÒâÐÞ¸ÄºóµÄÐ­ÒéÌõ¿î£©£¬²¢¶Ô±¾Ð­ÒéÎ´¾¡ÊÂÒË±£ÁôËùÓÐÈ¨Àû¡£
+1.åºè¨€:æœ¬åè®®ç”¨äºŽç®¡è¾–ç”¨æˆ·åŠå•†ä¸šå®žä½“ (ä»¥ä¸‹ç®€ç§°ï¼šè¢«è®¸å¯äºº) å’Œè½¯ä»¶åŽŸä½œè€…ï¼ˆä»¥ä¸‹ç®€ç§°ï¼šè®¸å¯æ–¹ï¼‰ä¹‹é—´
+çš„å…³ç³»ã€‚ä½¿ç”¨æœ¬è½¯ä»¶ï¼ˆåŒ…æ‹¬ä½†ä¸é™äºŽå¤åˆ¶ã€ä¸‹è½½ã€å®‰è£…ã€è¿è¡Œæœ¬è½¯ä»¶ï¼‰å³è§†ä¸ºåŒæ„æœ¬åè®®ã€‚æœ¬åè®®è§„å®šäº†
+ä½¿ç”¨è®¸å¯æ–¹åˆ›å»ºå’Œæ‹¥æœ‰çš„EdgeJSON (ä»¥ä¸‹ç®€ç§°æœ¬è½¯ä»¶) çš„æ¡æ¬¾ã€æƒåˆ©ã€é™åˆ¶å’Œä¹‰åŠ¡ï¼Œè¯¦æƒ…å¦‚ä¸‹:
+2.è®¸å¯è¯æŽˆäºˆ:è®¸å¯æ–¹ç‰¹æ­¤æŽˆäºˆè¢«è®¸å¯äººä¸ªäººå¤åˆ¶ã€åˆ†å‘ã€ä¿®æ”¹ä»¥åŠéžå•†ä¸šæ€§ä½¿ç”¨æœ¬è½¯ä»¶çš„æƒåˆ©(å•†ä¸šä½¿ç”¨è¯·
+  è”ç³»è½¯ä»¶åŽŸä½œè€…)ã€‚
+3.è¢«è®¸å¯äººä¹‰åŠ¡ï¼š
+	3.1.åœ¨å»¶ä¼¸çš„ä»£ç ä¸­ï¼ˆä¿®æ”¹å’Œç”±æœ¬è½¯ä»¶çš„æºä»£ç è¡ç”Ÿçš„ä»£ç ä¸­ï¼‰å¿…é¡»åŒ…å«åŽŸä»£ç ä¸­çš„åè®®ä¸Žå£°æ˜Žã€‚
+	3.2.è‹¥è¢«è®¸å¯äººä¿®æ”¹äº†ä»£ç ï¼Œåˆ™å¿…é¡»åœ¨è¢«ä¿®æ”¹çš„æ–‡ä»¶ä¸­ä½œå‡ºç›¸åº”è¯´æ˜Žã€‚
+4.å—é™:ç¦æ­¢è¢«è®¸å¯äººä»¥å•†ä¸šæˆ–ç›ˆåˆ©ä¸ºç›®çš„ä½¿ç”¨æœ¬è½¯ä»¶æˆ–å…¶è¡ç”Ÿä½œå“ï¼ˆåŒ…æ‹¬ä½†ä¸é™äºŽä¿®æ”¹æœ¬è½¯ä»¶ã€ä»¥æœ¬è½¯ä»¶ä¸º
+åŸºç¡€è¿›è¡ŒäºŒæ¬¡å¼€å‘ã€è°ƒç”¨æœ¬è½¯ä»¶æ‰€å®šä¹‰çš„æŽ¥å£ç­‰ï¼‰ã€‚
+5.ç»ˆæ­¢:
+	5.1.è‹¥è¢«è®¸å¯äººæœ‰è¿æœ¬åè®®ä»»ä¸€æ¡æ¬¾å³è‡ªåŠ¨ç»ˆæ­¢è®¸å¯ã€‚
+	5.2.è®¸å¯æ–¹æœ‰æƒç»ˆæ­¢æœ¬åè®®åŠå¯¹è¢«è®¸å¯äººçš„è®¸å¯ã€‚
+6.å…è´£æ¡æ¬¾:åœ¨æ³•å¾‹å…è®¸çš„èŒƒå›´å†…ï¼Œè½¯ä»¶æ˜¯æ ¹æ®åŽŸæ ·æä¾›çš„ã€‚è®¸å¯æ–¹ä¸åº”å¯¹å› æœ¬è½¯ä»¶çš„æ“ä½œã€æ•…éšœã€bugæˆ–æœ¬è½¯
+ä»¶ä¸Žè¢«è®¸å¯æ–¹çš„æœ€ç»ˆè®¾å¤‡ä¹‹é—´çš„ä»»ä½•å…¶ä»–äº¤äº’è€Œæ‹›è‡´çš„ä»»ä½•æŸå®³ã€è´¹ç”¨ã€ä»»ä½•å…¶ä»–ä»˜æ¬¾æ‰¿æ‹…è´£ä»»ï¼Œæ­¤å¤–ï¼Œåœ¨
+ä¾èµ–æœ¬è½¯ä»¶æˆ–ä½¿ç”¨æœ¬è½¯ä»¶çš„æºä»£ç æ—¶ï¼Œ è®¸å¯æ–¹ä¸åº”å¯¹è¢«è®¸å¯æ–¹ç¼–å†™çš„æºä»£ç ä¸­çš„ä»»ä½•ç¼ºé™·è´Ÿè´£ã€‚
+7.ä¿ç•™æƒåˆ©ï¼šè®¸å¯æ–¹æœ‰æƒä¿®æ”¹æœ¬åè®®æ¡æ¬¾ï¼ˆè‹¥è¢«è®¸å¯äººä¸è®¤åŒä¿®æ”¹åŽçš„åè®®æ¡æ¬¾ï¼Œå¯åœæ­¢ä½¿ç”¨æœ¬è½¯ä»¶ï¼Œç»§ç»­ä½¿
+ç”¨å³ä»£è¡¨åŒæ„ä¿®æ”¹åŽçš„åè®®æ¡æ¬¾ï¼‰ï¼Œå¹¶å¯¹æœ¬åè®®æœªå°½äº‹å®œä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
 */
 #include "EdgeJSON.h"
 #include <fstream>
@@ -31,46 +31,46 @@ int main()
 {
 	EdgeJSON newjson;
 
-	//¹¹½¨²âÊÔ
+	//æž„å»ºæµ‹è¯•
 	newjson.AddObject(newjson);
-	newjson.AddKeyvalue(newjson[1], son, "name", "½ðÓ¹");
+	newjson.AddKeyvalue(newjson[1], son, "name", "é‡‘åº¸");
 	newjson.AddKeyvalue(newjson["name"], brother, "foreign-language name", "Louis Cha");
-	newjson.AddKeyvalue(newjson["foreign-language name"], brother, "nationality", "ÖÐ¹ú");
-	newjson.AddKeyvalue(newjson["nationality"], brother, "nation", "ºº×å");
+	newjson.AddKeyvalue(newjson["foreign-language name"], brother, "nationality", "ä¸­å›½");
+	newjson.AddKeyvalue(newjson["nationality"], brother, "nation", "æ±‰æ—");
 	newjson.AddArray(newjson["nation"], brother, "birthplace");
 	newjson.AddObject(newjson["birthplace"], son);
 	newjson.AddObject(newjson["birthplace"][1], brother);
-	newjson.AddKeyvalue(newjson["birthplace"][1], son, "province", "Õã½­");
-	newjson.AddKeyvalue(newjson["birthplace"][2], son, "city", "¼ÎÐË");
+	newjson.AddKeyvalue(newjson["birthplace"][1], son, "province", "æµ™æ±Ÿ");
+	newjson.AddKeyvalue(newjson["birthplace"][2], son, "city", "å˜‰å…´");
 	newjson.AddArray(newjson["birthplace"], brother, "profession");
-	newjson.AddValue(newjson["profession"], son, "×÷¼Ò");
-	newjson.AddValue(newjson["profession"][1], brother, "ÕþÂÛ¼Ò");
-	newjson.AddValue(newjson["profession"][2], brother, "Éç»á»î¶¯¼Ò");
+	newjson.AddValue(newjson["profession"], son, "ä½œå®¶");
+	newjson.AddValue(newjson["profession"][1], brother, "æ”¿è®ºå®¶");
+	newjson.AddValue(newjson["profession"][2], brother, "ç¤¾ä¼šæ´»åŠ¨å®¶");
 	newjson.AddArray(newjson["profession"], brother, "works");
-	newjson.AddValue(newjson["works"], son, "ÉäµñÓ¢ÐÛ´«");
-	newjson.AddValue(newjson["works"][1], brother, "ÉñµñÏÀÂÂ");
-	newjson.AddValue(newjson["works"][2], brother, "ÒÐÌìÍÀÁú¼Ç");
+	newjson.AddValue(newjson["works"], son, "å°„é›•è‹±é›„ä¼ ");
+	newjson.AddValue(newjson["works"][1], brother, "ç¥žé›•ä¾ ä¾£");
+	newjson.AddValue(newjson["works"][2], brother, "å€šå¤©å± é¾™è®°");
 
-	//Êý¾Ý½Ó¿Ú²âÊÔ
-	newjson["birthplace"][2]["city"].value_str = "º£Äþ";
-	newjson["works"][2].value_str = "ÌìÁú°Ë²¿";
+	//æ•°æ®æŽ¥å£æµ‹è¯•
+	newjson["birthplace"][2]["city"].value_str = "æµ·å®";
+	newjson["works"][2].value_str = "å¤©é¾™å…«éƒ¨";
 
-	//´òÓ¡¹¹½¨½á¹¹
+	//æ‰“å°æž„å»ºç»“æž„
 	cout << newjson.EdgeJSONPrint() << "\n\n";
-	newjson.DeleteEdgeJSON();		//É¾³ýjson½á¹¹
+	newjson.DeleteEdgeJSON();		//åˆ é™¤jsonç»“æž„
 	
-	//½âÎösample.json²âÊÔ
+	//è§£æžsample.jsonæµ‹è¯•
 	fstream test;
-	test.open("sample.json", ios::in);		//´ò¿ªsample.jsonÎÄ¼þ
+	test.open("sample.json", ios::in);		//æ‰“å¼€sample.jsonæ–‡ä»¶
 	string s;
 	while (!test.eof())
 	{
-		s += test.get();				//ÒÀ´Î¶ÁÈëÎÄ¼þÄÚÈÝ
+		s += test.get();				//ä¾æ¬¡è¯»å…¥æ–‡ä»¶å†…å®¹
 	}
-	s = s.substr(0, s.size() - 1);		//È¥³ý×Ö·û´®Ä©Î²µÄEOF
-	cout << s << "\n\n";					//´òÓ¡½âÎöÇ°µÄ×Ö·û´®
-	newjson.EdgeJSONParse(s);			//µ÷ÓÃ½âÎö·½·¨
-	cout << newjson.EdgeJSONPrint() << "\n\n";		//´òÓ¡½âÎöÉú³ÉµÄjson½á¹¹
+	s = s.substr(0, s.size() - 1);		//åŽ»é™¤å­—ç¬¦ä¸²æœ«å°¾çš„EOF
+	cout << s << "\n\n";					//æ‰“å°è§£æžå‰çš„å­—ç¬¦ä¸²
+	newjson.EdgeJSONParse(s);			//è°ƒç”¨è§£æžæ–¹æ³•
+	cout << newjson.EdgeJSONPrint() << "\n\n";		//æ‰“å°è§£æžç”Ÿæˆçš„jsonç»“æž„
 	system("pause");
 	return 0;
 }

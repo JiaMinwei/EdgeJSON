@@ -1,8 +1,10 @@
 *.exe
-.vs
+.vscode
 *.sln
 *.vcxproj
 *.filters
 *.user
 x64
 Debug
+.DS_Store
+bin
