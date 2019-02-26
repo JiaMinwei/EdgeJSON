@@ -114,9 +114,9 @@ class EdgeJSON			//主要类,使用本库的起点,方法皆封装于此
 
 	string EdgeJSONPrint();				//打印json结构,输出字符串
 	bool DeleteEdgeJSON();		//删除整个结构
-	void EdgeJSONParse(string);		//解析字符串
+	void EdgeJSONParse(string &); //解析字符串
 
-private:
+  private:
 	Node * CreateNode(Node &, Relations);		//生成一个节点，以备赋值与挂载到树结构上
 
 	string TraversalPrint(Node *);		//遍历类树结构的每个节点以便生成输出字符串
@@ -126,7 +126,7 @@ private:
 
 	bool TraversalDelete(Node *);		//遍历json结构进行删除
 
-	Node *LayerParse(string);			//分层解析
+	Node *LayerParse(string&);			//分层解析
 	void  Lexing(vector<token *>&, string &);	//词法分析器
 	Node *ParseObject(string);			//解析对象
 	Node *ParseArray(string);			//解析数组

@@ -61,16 +61,38 @@ int main()
 	
 	//解析sample.json测试
 	fstream test;
-	test.open("sample.json", ios::in);		//打开sample.json文件
+	test.open("sample.json", ios::in); //打开sample.json文件
 	string s;
 	while (!test.eof())
 	{
 		s += test.get();				//依次读入文件内容
 	}
 	s = s.substr(0, s.size() - 1);		//去除字符串末尾的EOF
-	cout << s << "\n\n";					//打印解析前的字符串
+
+	clock_t start = clock();
 	newjson.EdgeJSONParse(s);			//调用解析方法
-	cout << newjson.EdgeJSONPrint() << "\n\n";		//打印解析生成的json结构
+	clock_t ends = clock();
+
+	string pret = newjson.EdgeJSONPrint();
+	for (int i = 0; i < s.size(); i++)
+	{
+		if (s[i] == pret[i])
+		{
+			cout << 'O' << flush;
+		}
+		else
+		{
+			cout << 'X' << flush;
+			cout << "\n<<<出错位置>>>：" << i << endl;
+			break;
+		}
+		if(i==s.size()-1)
+		{
+			cout << "\n<<<解析无误>>>"<< endl;
+		}
+	}
+	cout << "解析耗时: " << (double)(ends - start) / CLOCKS_PER_SEC << endl;
+
 	system("pause");
 	return 0;
 }

@@ -288,7 +288,7 @@ bool EdgeJSON::DeleteEdgeJSON() //删除所有节点
 	return false;
 }
 
-void EdgeJSON::EdgeJSONParse(string parse_str)
+void EdgeJSON::EdgeJSONParse(string &parse_str)
 {
 	string words;
 	int flag = 0;
@@ -306,7 +306,7 @@ void EdgeJSON::EdgeJSONParse(string parse_str)
 			j++;
 		}
 	}
-	//cout << words << endl;
+	parse_str = words;
 	this->root = LayerParse(words);
 }
 
@@ -473,7 +473,7 @@ bool EdgeJSON::TraversalDelete(Node *nownode_ptr)
 	return false; //否则返回删除失败
 }
 
-Node *EdgeJSON::LayerParse(string words)
+Node *EdgeJSON::LayerParse(string &words)
 {
 	vector<token *> tokenarray; //存储各个词素对象的指针
 	Node *bynode_ptr = nullptr; //当前一层结构的挂载点,便于挂载到上一层
