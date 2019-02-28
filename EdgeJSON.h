@@ -26,6 +26,8 @@ Copyright (c) 2019 Jiaminwei
 #include <vector>
 #include <sstream>
 
+//#define DEBUG 
+
 using namespace std;
 
 enum Types			
@@ -58,7 +60,7 @@ class Node			//节点类
 	string key;			//节点的键名称(如果有)
 	
 	string value_str;	//节点的值类型,共4种
-	int value_int;
+	long long value_int;
 	int value_null;
 	double value_dou;
 	bool value_boo;
@@ -115,6 +117,7 @@ class EdgeJSON			//主要类,使用本库的起点,方法皆封装于此
 	string EdgeJSONPrint();				//打印json结构,输出字符串
 	bool DeleteEdgeJSON();		//删除整个结构
 	void EdgeJSONParse(string &); //解析字符串
+	void isSucceed(string &, string &);	//与预处理后的字符串进行比对，验证是否解析正确
 
   private:
 	Node * CreateNode(Node &, Relations);		//生成一个节点，以备赋值与挂载到树结构上

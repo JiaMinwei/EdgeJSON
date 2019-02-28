@@ -294,7 +294,7 @@ void EdgeJSON::EdgeJSONParse(string &parse_str)
 	int flag = 0;
 	for (int i = 0; i < parse_str.size(); i++) //剔除空格、换行符、制表符
 	{
-		if (parse_str[i] == '\"')
+		if ((parse_str[i] == '\"') && parse_str[i - 1] != '\\')
 		{
 			flag++;
 		}
@@ -308,6 +308,37 @@ void EdgeJSON::EdgeJSONParse(string &parse_str)
 	}
 	parse_str = words;
 	this->root = LayerParse(words);
+}
+
+void EdgeJSON::isSucceed(string &pret,string &result)
+{
+	for (int i = 0; i < pret.size(); i++)
+	{
+		if (pret[i] == result[i])
+		{
+			cout << 'O' << flush;
+		}
+		else
+		{
+			cout << 'X' << flush;
+			cout << "\n<<<出错位置>>>：" << i << endl;
+			i -= 5;
+			for (int j = 0; j < 10; j++)
+			{
+				cout << pret[i + j];
+			}
+			cout << endl;
+			for (int j = 0; j < 10; j++)
+			{
+				cout << result[i + j];
+			}
+			break;
+		}
+		if (i == pret.size() - 1)
+		{
+			cout << "\n<<<解析无误>>>" << endl;
+		}
+	}
 }
 
 Node *EdgeJSON::CreateNode(Node &n, Relations r)
@@ -580,63 +611,61 @@ Node *EdgeJSON::LayerParse(string &words)
 
 void EdgeJSON::Lexing(vector<token *> &tokenarray, string &words)
 {
-	tokenarray.push_back(new token);	   //新建词素
-	int flag = 0, flag_one = 0, count = 0; //声明标志变量与计数器变量
+	tokenarray.push_back(new token);										   //新建词素
+	int flag = 0, flag_o = 0, flag_a = 0, flag_c = 0, flag_one = 0, count = 0; //声明标志变量与计数器变量
 	for (int i = 0; i < words.size(); i++)
 	{
-		tokenarray[count]->token_str += words[i];   //将读取到的字符存入词素
-		if ((words[0] != '{') && (words[0] != '[')) //传入字符串首字符不是{和[时执行引号成对识别
+		tokenarray[count]->token_str += words[i]; //将读取到的字符存入词素
+		if (words[i] == '{' && flag_c % 2 == 0)
 		{
-			if (words[i] == '\"') //遇到引号,标志加1
+			flag_o++;
+			if (flag_o == 1 && flag_a == 0)
 			{
-				flag_one++;
-			}
-			if (words[i + 1] == ',') //如果下一个字符是逗号
-			{
-				if ((flag == 0) && (flag_one % 2 == 0)) //flag=0说明逗号不在当前正在提取的词素内
-				{										//flag_one为偶说明逗号不在当前正在提取的词素中的引号对之中
-					tokenarray.push_back(new token);	//条件满足时进行下一词素的提取
-					count++;
-					i++; //跳过逗号
-				}
-			}
-		}
-		if ((words[i] == '{') || (words[i] == '['))
-		{
-			if (flag == 0) //flag=0说明{或[不在当前正在提取的词素内
-			{
-				if (words[i] == '{') //提取一个对象词素
-				{
-					tokenarray[count]->token_type = EdgeJSON_object;
-				}
-				if (words[i] == '[') //提取一个数组词素
-				{
-					tokenarray[count]->token_type = EdgeJSON_array;
-				}
-				tokenarray.push_back(new token); //flag=0时进行下一词素的提取
+				tokenarray[count]->token_type = EdgeJSON_object;
+				tokenarray.push_back(new token);
 				count++;
+				tokenarray[count]->token_type = EdgeJSON_layer;
 			}
-			flag++; //遇到{或[,标志加1
 		}
-		if ((words[i + 1] == '}') || (words[i + 1] == ']'))
+		if (words[i] == '}' && flag_c % 2 == 0)
 		{
-			flag--;		   //遇到}或],标志减1
-			if (flag == 0) //flag=0说明正在提取的词素的提取过程已结束
+			flag_o--;
+			if (flag_o == 0 && flag_a == 0)
 			{
-				tokenarray[count]->token_type = EdgeJSON_layer; //赋予词素类型
-				if (words.size() - 1 != i + 1)
-				{
-					tokenarray.push_back(new token); //如果字符串没有读取完毕,继续创建词素存储空间
-					count++;
-				}
-				if (words[i + 2] == ',') //下下一个字符是逗号,则跳过一个字符
-				{
-					i++;
-				}
-				i++; //跳过}或]
+				tokenarray[count]->token_str.pop_back();
 			}
+		}
+		if (words[i] == '[' && flag_c % 2 == 0)
+		{
+			flag_a++;
+			if (flag_a == 1 && flag_o == 0)
+			{
+				tokenarray[count]->token_type = EdgeJSON_array;
+				tokenarray.push_back(new token);
+				count++;
+				tokenarray[count]->token_type = EdgeJSON_layer;
+			}
+		}
+		if (words[i] == ']' && flag_c % 2 == 0)
+		{
+			flag_a--;
+			if (flag_a == 0 && flag_o == 0)
+			{
+				tokenarray[count]->token_str.pop_back();
+			}
+		}
+		if (words[i] == ',' && flag_c % 2 == 0 && flag_o == 0 && flag_a == 0)
+		{
+			tokenarray[count]->token_str.pop_back();
+			tokenarray.push_back(new token);
+			count++;
+		}
+		if ((words[i] == '\"' && i == 0) || (words[i] == '\"' && i >= 1 && words[i - 1] != '\\')) //遇到引号,标志加1
+		{
+			flag_c++;
 		}
 	}
+
 	for (int i = 0; i < tokenarray.size(); i++)
 	{
 		if (tokenarray[i]->token_type == EdgeJSON_void) //对未赋予类型的词素进行词素赋予
@@ -686,6 +715,12 @@ void EdgeJSON::Lexing(vector<token *> &tokenarray, string &words)
 			}
 		}
 	}
+	#ifdef DEBUG
+	for (int i = 0; i < tokenarray.size(); i++)		//打印分词结果，用以调试分词器
+	{
+		cout << tokenarray[i]->token_str << endl;
+	}
+	#endif
 }
 
 Node *EdgeJSON::ParseObject(string token_str)
@@ -694,7 +729,7 @@ Node *EdgeJSON::ParseObject(string token_str)
 	return_ptr->node_type = EdgeJSON_object; //赋予节点类型
 	if (token_str[0] == '\"')				 //词素首字符是引号则提取键名称
 	{
-		for (int i = 1; token_str[i] != '\"'; i++) //如果下一字符是引号则提取完毕
+		for (int i = 1; !(token_str[i] == '\"' && token_str[i - 1] != '\\'); i++) //如果下一字符是引号则提取完毕
 		{
 			return_ptr->key += token_str[i];
 		}
@@ -708,7 +743,7 @@ Node *EdgeJSON::ParseArray(string token_str)
 	return_ptr->node_type = EdgeJSON_array;
 	if (token_str[0] == '\"')
 	{
-		for (int i = 1; token_str[i] != '\"'; i++)
+		for (int i = 1; !(token_str[i] == '\"' && token_str[i - 1] != '\\'); i++)
 		{
 			return_ptr->key += token_str[i];
 		}
@@ -724,7 +759,7 @@ Node *EdgeJSON::ParseInt(string token_str)
 	return_ptr->node_type = EdgeJSON_int;
 	if (token_str[0] == '\"') //词素首字符是引号则提取键名称
 	{
-		for (int i = 1; token_str[i] != '\"'; i++)
+		for (int i = 1; !(token_str[i] == '\"' && token_str[i - 1] != '\\'); i++)
 		{
 			return_ptr->key += token_str[i];
 		}
@@ -760,7 +795,7 @@ Node *EdgeJSON::ParseDouble(string token_str)
 	return_ptr->node_type = EdgeJSON_double;
 	if (token_str[0] == '\"')
 	{
-		for (int i = 1; token_str[i] != '\"'; i++)
+		for (int i = 1; !(token_str[i] == '\"' && token_str[i - 1] != '\\'); i++)
 		{
 			return_ptr->key += token_str[i];
 		}
@@ -796,7 +831,7 @@ Node *EdgeJSON::ParseString(string token_str)
 	return_ptr->node_type = EdgeJSON_string;
 	if (token_str[0] == '\"') //提取键名称
 	{
-		for (int i = 1; token_str[i] != '\"'; i++)
+		for (int i = 1; !(token_str[i] == '\"' && token_str[i - 1] != '\\'); i++)
 		{
 			return_ptr->key += token_str[i];
 			if (i + 2 == token_str.size()) //如果冒号是词素内容的末尾字符则将提取到的字符转存到节点value_str中
@@ -810,7 +845,7 @@ Node *EdgeJSON::ParseString(string token_str)
 	{
 		if (token_str[i] == ':') //如果遇到冒号则提取冒号后的字符串到value_str
 		{
-			for (int j = i + 1; token_str[j + 1] != '\"'; j++)
+			for (int j = i + 1; j + 2 < token_str.size(); j++)
 			{
 				return_ptr->value_str += token_str[j + 1];
 			}
@@ -827,7 +862,7 @@ Node *EdgeJSON::ParseBool(string token_str)
 	return_ptr->node_type = EdgeJSON_bool;
 	if (token_str[0] == '\"') //提取键名称
 	{
-		for (int i = 1; token_str[i] != '\"'; i++)
+		for (int i = 1; !(token_str[i] == '\"' && token_str[i - 1] != '\\'); i++)
 		{
 			return_ptr->key += token_str[i];
 		}
@@ -863,7 +898,7 @@ Node *EdgeJSON::ParseNull(string token_str)
 	return_ptr->node_type = EdgeJSON_null;
 	if (token_str[0] == '\"') //提取键名称
 	{
-		for (int i = 1; token_str[i] != '\"'; i++)
+		for (int i = 1; !(token_str[i] == '\"' && token_str[i - 1] != '\\'); i++)
 		{
 			return_ptr->key += token_str[i];
 		}

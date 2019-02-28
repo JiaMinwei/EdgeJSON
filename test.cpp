@@ -57,42 +57,31 @@ int main()
 
 	//打印构建结构
 	cout << newjson.EdgeJSONPrint() << "\n\n";
-	newjson.DeleteEdgeJSON();		//删除json结构
-	
+	newjson.DeleteEdgeJSON(); //删除json结构
+
 	//解析sample.json测试
 	fstream test;
-	test.open("sample.json", ios::in); //打开sample.json文件
+	test.open("../twitter.json", ios::in); //打开sample.json文件
 	string s;
 	while (!test.eof())
 	{
-		s += test.get();				//依次读入文件内容
+		s += test.get(); //依次读入文件内容
 	}
-	s = s.substr(0, s.size() - 1);		//去除字符串末尾的EOF
+	s = s.substr(0, s.size() - 1); //去除字符串末尾的EOF
 
 	clock_t start = clock();
-	newjson.EdgeJSONParse(s);			//调用解析方法
+	newjson.EdgeJSONParse(s); //调用解析方法
 	clock_t ends = clock();
 
-	string pret = newjson.EdgeJSONPrint();
-	for (int i = 0; i < s.size(); i++)
-	{
-		if (s[i] == pret[i])
-		{
-			cout << 'O' << flush;
-		}
-		else
-		{
-			cout << 'X' << flush;
-			cout << "\n<<<出错位置>>>：" << i << endl;
-			break;
-		}
-		if(i==s.size()-1)
-		{
-			cout << "\n<<<解析无误>>>"<< endl;
-		}
-	}
+	string result = newjson.EdgeJSONPrint();
+	newjson.isSucceed(s, result);
+
 	cout << "解析耗时: " << (double)(ends - start) / CLOCKS_PER_SEC << endl;
 
+#ifdef DEBUG
+	cout << s << endl;
+	cout << result << endl;
+#endif
 	system("pause");
 	return 0;
 }
