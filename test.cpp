@@ -32,28 +32,32 @@ int main()
 	EdgeJSON newjson;
 
 	//构建测试
-	newjson.AddObject(newjson);
-	newjson.AddKeyvalue(newjson[1], son, "name", "金庸");
-	newjson.AddKeyvalue(newjson["name"], brother, "foreign-language name", "Louis Cha");
-	newjson.AddKeyvalue(newjson["foreign-language name"], brother, "nationality", "中国");
-	newjson.AddKeyvalue(newjson["nationality"], brother, "nation", "汉族");
-	newjson.AddArray(newjson["nation"], brother, "birthplace");
-	newjson.AddObject(newjson["birthplace"], son);
-	newjson.AddObject(newjson["birthplace"][1], brother);
-	newjson.AddKeyvalue(newjson["birthplace"][1], son, "province", "浙江");
-	newjson.AddKeyvalue(newjson["birthplace"][2], son, "city", "嘉兴");
-	newjson.AddArray(newjson["birthplace"], brother, "profession");
-	newjson.AddValue(newjson["profession"], son, "作家");
-	newjson.AddValue(newjson["profession"][1], brother, "政论家");
-	newjson.AddValue(newjson["profession"][2], brother, "社会活动家");
-	newjson.AddArray(newjson["profession"], brother, "works");
-	newjson.AddValue(newjson["works"], son, "射雕英雄传");
-	newjson.AddValue(newjson["works"][1], brother, "神雕侠侣");
-	newjson.AddValue(newjson["works"][2], brother, "倚天屠龙记");
+	Node *ob = newjson.AddObject(newjson);
+	newjson.AddKeyvalue(*ob, "name", "金庸");
+	newjson.AddKeyvalue(*ob, "foreign-language name", "Louis Cha");
+	newjson.AddKeyvalue(*ob, "nationality", "中国");
+	newjson.AddKeyvalue(*ob, "nation", "汉族");
+
+	Node *ar0 = newjson.AddArray(*ob, "birthplace");
+
+	newjson.AddKeyvalue(*newjson.AddObject(*ar0), "province", "浙江");
+	newjson.AddKeyvalue(*newjson.AddObject(*ar0), "city", "嘉兴");
+
+	Node *ar2 = newjson.AddArray(*ob, "profession");
+
+	newjson.AddValue(*ar2, "作家");
+	newjson.AddValue(*ar2, "政论家");
+	newjson.AddValue(*ar2, "社会活动家");
+
+	Node *ar3 = newjson.AddArray(*ob, "works");
+
+	newjson.AddValue(*ar3, "射雕英雄传");
+	newjson.AddValue(*ar3, "神雕侠侣");
+	newjson.AddValue(*ar3, "倚天屠龙记");
 
 	//数据接口测试
-	newjson["birthplace"][2]["city"].value_str = "海宁";
-	newjson["works"][2].value_str = "天龙八部";
+	(*ar0)[2]["city"].value_str = "海宁";
+	(*ar3)[2].value_str = "天龙八部";
 
 	//打印构建结构
 	cout << newjson.EdgeJSONPrint() << "\n\n";
@@ -61,7 +65,7 @@ int main()
 
 	//解析sample.json测试
 	fstream test;
-	test.open("../twitter.json", ios::in); //打开sample.json文件
+	test.open("./twitter.json", ios::in); //打开sample.json文件
 	string s;
 	while (!test.eof())
 	{
@@ -83,5 +87,7 @@ int main()
 	cout << result << endl;
 #endif
 	system("pause");
+	char c;
+	cin >> c;
 	return 0;
 }

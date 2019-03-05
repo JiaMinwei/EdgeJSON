@@ -71,10 +71,10 @@ Node &EdgeJSON::operator[](int i) //[]运算符重载,获取最近一层节点�
 	return GetNode(now_ptr, i);
 }
 
-Node *EdgeJSON::AddKeyvalue(Node &n, Relations r, const char *c, int i)
+Node *EdgeJSON::AddKeyvalue(Node &n, const char *c, int i)
 {
-	Node *add_ptr = CreateNode(n, r); //创建节点完成挂载
-	if (add_ptr == nullptr)			  //判断节点是否创建成功,失败则返回空指针
+	Node *add_ptr = CreateNode(n); //创建节点完成挂载
+	if (add_ptr == nullptr)		   //判断节点是否创建成功,失败则返回空指针
 	{
 		return nullptr;
 	}
@@ -84,9 +84,9 @@ Node *EdgeJSON::AddKeyvalue(Node &n, Relations r, const char *c, int i)
 	return add_ptr;
 }
 
-Node *EdgeJSON::AddKeyvalue(Node &n, Relations r, const char *c, double d)
+Node *EdgeJSON::AddKeyvalue(Node &n, const char *c, double d)
 {
-	Node *add_ptr = CreateNode(n, r);
+	Node *add_ptr = CreateNode(n);
 	if (add_ptr == nullptr)
 	{
 		return nullptr;
@@ -97,9 +97,9 @@ Node *EdgeJSON::AddKeyvalue(Node &n, Relations r, const char *c, double d)
 	return add_ptr;
 }
 
-Node *EdgeJSON::AddKeyvalue(Node &n, Relations r, const char *c, const char *cc)
+Node *EdgeJSON::AddKeyvalue(Node &n, const char *c, const char *cc)
 {
-	Node *add_ptr = CreateNode(n, r);
+	Node *add_ptr = CreateNode(n);
 	if (add_ptr == nullptr)
 	{
 		return nullptr;
@@ -110,9 +110,9 @@ Node *EdgeJSON::AddKeyvalue(Node &n, Relations r, const char *c, const char *cc)
 	return add_ptr;
 }
 
-Node *EdgeJSON::AddKeyvalue(Node &n, Relations r, const char *c, bool b)
+Node *EdgeJSON::AddKeyvalue(Node &n, const char *c, bool b)
 {
-	Node *add_ptr = CreateNode(n, r);
+	Node *add_ptr = CreateNode(n);
 	if (add_ptr == nullptr)
 	{
 		return nullptr;
@@ -123,9 +123,9 @@ Node *EdgeJSON::AddKeyvalue(Node &n, Relations r, const char *c, bool b)
 	return add_ptr;
 }
 
-Node *EdgeJSON::AddKeyvalue(Node &n, Relations r, const char *c)
+Node *EdgeJSON::AddKeyvalue(Node &n, const char *c)
 {
-	Node *add_ptr = CreateNode(n, r);
+	Node *add_ptr = CreateNode(n);
 	if (add_ptr == nullptr)
 	{
 		return nullptr;
@@ -136,9 +136,9 @@ Node *EdgeJSON::AddKeyvalue(Node &n, Relations r, const char *c)
 	return add_ptr;
 }
 
-Node *EdgeJSON::AddArray(Node &n, Relations r, const char *c)
+Node *EdgeJSON::AddArray(Node &n, const char *c)
 {
-	Node *add_ptr = CreateNode(n, r);
+	Node *add_ptr = CreateNode(n);
 	if (add_ptr == nullptr)
 	{
 		return nullptr;
@@ -148,9 +148,9 @@ Node *EdgeJSON::AddArray(Node &n, Relations r, const char *c)
 	return add_ptr;
 }
 
-Node *EdgeJSON::AddArray(Node &n, Relations r)
+Node *EdgeJSON::AddArray(Node &n)
 {
-	Node *add_ptr = CreateNode(n, r);
+	Node *add_ptr = CreateNode(n);
 	if (add_ptr == nullptr)
 	{
 		return nullptr;
@@ -171,9 +171,9 @@ Node *EdgeJSON::AddArray(EdgeJSON &n)
 	return add_ptr;
 }
 
-Node *EdgeJSON::AddObject(Node &n, Relations r, const char *c)
+Node *EdgeJSON::AddObject(Node &n, const char *c)
 {
-	Node *add_ptr = CreateNode(n, r);
+	Node *add_ptr = CreateNode(n);
 	if (add_ptr == nullptr)
 	{
 		return nullptr;
@@ -183,9 +183,9 @@ Node *EdgeJSON::AddObject(Node &n, Relations r, const char *c)
 	return add_ptr;
 }
 
-Node *EdgeJSON::AddObject(Node &n, Relations r)
+Node *EdgeJSON::AddObject(Node &n)
 {
-	Node *add_ptr = CreateNode(n, r);
+	Node *add_ptr = CreateNode(n);
 	if (add_ptr == nullptr)
 	{
 		return nullptr;
@@ -206,9 +206,9 @@ Node *EdgeJSON::AddObject(EdgeJSON &n)
 	return add_ptr;
 }
 
-Node *EdgeJSON::AddValue(Node &n, Relations r, int i)
+Node *EdgeJSON::AddValue(Node &n, int i)
 {
-	Node *add_ptr = CreateNode(n, r);
+	Node *add_ptr = CreateNode(n);
 	if (add_ptr == nullptr)
 	{
 		return nullptr;
@@ -218,9 +218,9 @@ Node *EdgeJSON::AddValue(Node &n, Relations r, int i)
 	return add_ptr;
 }
 
-Node *EdgeJSON::AddValue(Node &n, Relations r, double d)
+Node *EdgeJSON::AddValue(Node &n, double d)
 {
-	Node *add_ptr = CreateNode(n, r);
+	Node *add_ptr = CreateNode(n);
 	if (add_ptr == nullptr)
 	{
 		return nullptr;
@@ -230,9 +230,9 @@ Node *EdgeJSON::AddValue(Node &n, Relations r, double d)
 	return add_ptr;
 }
 
-Node *EdgeJSON::AddValue(Node &n, Relations r, const char *c)
+Node *EdgeJSON::AddValue(Node &n, const char *c)
 {
-	Node *add_ptr = CreateNode(n, r);
+	Node *add_ptr = CreateNode(n);
 	if (add_ptr == nullptr)
 	{
 		return nullptr;
@@ -242,9 +242,9 @@ Node *EdgeJSON::AddValue(Node &n, Relations r, const char *c)
 	return add_ptr;
 }
 
-Node *EdgeJSON::AddValue(Node &n, Relations r, bool b)
+Node *EdgeJSON::AddValue(Node &n, bool b)
 {
-	Node *add_ptr = CreateNode(n, r);
+	Node *add_ptr = CreateNode(n);
 	if (add_ptr == nullptr)
 	{
 		return nullptr;
@@ -254,9 +254,9 @@ Node *EdgeJSON::AddValue(Node &n, Relations r, bool b)
 	return add_ptr;
 }
 
-Node *EdgeJSON::AddValue(Node &n, Relations r)
+Node *EdgeJSON::AddValue(Node &n)
 {
-	Node *add_ptr = CreateNode(n, r);
+	Node *add_ptr = CreateNode(n);
 	if (add_ptr == nullptr)
 	{
 		return nullptr;
@@ -310,7 +310,7 @@ void EdgeJSON::EdgeJSONParse(string &parse_str)
 	this->root = LayerParse(words);
 }
 
-void EdgeJSON::isSucceed(string &pret,string &result)
+void EdgeJSON::isSucceed(string &pret, string &result)
 {
 	for (int i = 0; i < pret.size(); i++)
 	{
@@ -341,20 +341,26 @@ void EdgeJSON::isSucceed(string &pret,string &result)
 	}
 }
 
-Node *EdgeJSON::CreateNode(Node &n, Relations r)
+Node *EdgeJSON::CreateNode(Node &n)
 {
 	Node *newnode_ptr = new Node; //动态开辟一个节点的内存空间
 	if (newnode_ptr == nullptr)   //判断是否成功生成新节点
 	{
 		return nullptr;
 	}
-	if (r == son) //以子节点身份挂载
+	Node *temp = nullptr;
+	if (n.son == nullptr)
 	{
 		n.son = newnode_ptr;
 	}
 	else
 	{
-		n.brother = newnode_ptr; //以兄弟节点身份挂载
+		temp = n.son;
+		while (temp->brother != nullptr)
+		{
+			temp = temp->brother;
+		}
+		temp->brother = newnode_ptr;
 	}
 	return newnode_ptr; //返回新建节点的指针
 }
@@ -715,12 +721,12 @@ void EdgeJSON::Lexing(vector<token *> &tokenarray, string &words)
 			}
 		}
 	}
-	#ifdef DEBUG
-	for (int i = 0; i < tokenarray.size(); i++)		//打印分词结果，用以调试分词器
+#ifdef DEBUG
+	for (int i = 0; i < tokenarray.size(); i++) //打印分词结果，用以调试分词器
 	{
 		cout << tokenarray[i]->token_str << endl;
 	}
-	#endif
+#endif
 }
 
 Node *EdgeJSON::ParseObject(string token_str)

@@ -26,13 +26,13 @@ Copyright (c) 2019 Jiaminwei
 #include <vector>
 #include <sstream>
 
-//#define DEBUG 
+//#define DEBUG
 
 using namespace std;
 
-enum Types			
+enum Types
 {
-	EdgeJSON_object,		//7种节点类型
+	EdgeJSON_object, //7种节点类型
 	EdgeJSON_array,
 	EdgeJSON_int,
 	EdgeJSON_double,
@@ -40,105 +40,105 @@ enum Types
 	EdgeJSON_bool,
 	EdgeJSON_null,
 
-	EdgeJSON_layer,		//为词法分析器另外扩展2种类型
+	EdgeJSON_layer, //为词法分析器另外扩展2种类型
 	EdgeJSON_void
-};		
-
-enum Relations		//节点之间的关系
-{
-	brother,		//兄弟节点关系
-	son				//父子节点关系
 };
 
-class Node			//节点类
+enum Relations //节点之间的关系
 {
-  public:
-	Node *brother;		//指向兄弟节点的指针
-	Node *son;			//指向子节点的指针
+	brother, //兄弟节点关系
+	son			 //父子节点关系
+};
 
-	Types node_type;	//节点类型
-	string key;			//节点的键名称(如果有)
-	
-	string value_str;	//节点的值类型,共4种
+class Node //节点类
+{
+public:
+	Node *brother; //指向兄弟节点的指针
+	Node *son;		 //指向子节点的指针
+
+	Types node_type; //节点类型
+	string key;			 //节点的键名称(如果有)
+
+	string value_str; //节点的值类型,共4种
 	long long value_int;
 	int value_null;
 	double value_dou;
 	bool value_boo;
 
-	Node();				//构造函数,初始化节点的成员变量
+	Node(); //构造函数,初始化节点的成员变量
 
-	Node &operator[](const char *);		//获取指定节点的引用
+	Node &operator[](const char *); //获取指定节点的引用
 	Node &operator[](int);
 };
 
-class token				//词法分析器词素的存储
+class token //词法分析器词素的存储
 {
 public:
-	Types token_type;	//词素类型
-	string token_str;	//词素内容
+	Types token_type; //词素类型
+	string token_str; //词素内容
 
-	token();			//初始化词素类的成员变量
+	token(); //初始化词素类的成员变量
 };
 
-class EdgeJSON			//主要类,使用本库的起点,方法皆封装于此
+class EdgeJSON //主要类,使用本库的起点,方法皆封装于此
 {
-  public:
-	Node *root;			//指向json结构首节点
-	
-	EdgeJSON();			//构造函数,初始化root指针
+public:
+	Node *root; //指向json结构首节点
 
-	Node &operator[](const char *);		//获取指定节点的引用
+	EdgeJSON(); //构造函数,初始化root指针
+
+	Node &operator[](const char *); //获取指定节点的引用
 	Node &operator[](int);
 
 	/*加入节点函数,通过参数列表的不同重载函数.
 	 *Node是被挂载的节点,Relations表明是以什么身份挂载.
 	 *其余参数视加入的节点情况而定.
 	 */
-	Node *AddKeyvalue(Node &, Relations, const char*, int);			//加入值为int型键值对
-	Node *AddKeyvalue(Node &, Relations, const char*, double);		//加入值为double型键值对
-	Node *AddKeyvalue(Node &, Relations, const char*, const char *);	//加入值为string型键值对
-	Node *AddKeyvalue(Node &, Relations, const char*, bool);			//加入值为bool型键值对
-	Node *AddKeyvalue(Node &, Relations, const char *);		//加入null类型
+	Node *AddKeyvalue(Node &, const char *, int);					 //加入值为int型键值对
+	Node *AddKeyvalue(Node &, const char *, double);			 //加入值为double型键值对
+	Node *AddKeyvalue(Node &, const char *, const char *); //加入值为string型键值对
+	Node *AddKeyvalue(Node &, const char *, bool);				 //加入值为bool型键值对
+	Node *AddKeyvalue(Node &, const char *);							 //加入null类型
 
-	Node *AddArray(Node &, Relations, const char *);	//加入数组到对象
-	Node *AddArray(Node &, Relations);				//加入数组到数组
-	Node *AddArray(EdgeJSON &);			//加入数组到EdgeJSON
+	Node *AddArray(Node &, const char *); //加入数组到对象
+	Node *AddArray(Node &);								//加入数组到数组
+	Node *AddArray(EdgeJSON &);						//加入数组到EdgeJSON
 
-	Node *AddObject(Node &, Relations, const char *); //加入对象到对象
-	Node *AddObject(Node &, Relations);				 //加入对象到数组
-	Node *AddObject(EdgeJSON &);			 //加入对象到EdgeJSON
+	Node *AddObject(Node &, const char *); //加入对象到对象
+	Node *AddObject(Node &);							 //加入对象到数组
+	Node *AddObject(EdgeJSON &);					 //加入对象到EdgeJSON
 
-	Node *AddValue(Node &, Relations, int);			//加入int型数组元素
-	Node *AddValue(Node &, Relations, double);		//加入double型数组元素
-	Node *AddValue(Node &, Relations, const char *);	//加入string型数组元素
-	Node *AddValue(Node &, Relations, bool);			//加入bool型数组元素
-	Node *AddValue(Node &, Relations);					//加入null数组元素
+	Node *AddValue(Node &, int);					//加入int型数组元素
+	Node *AddValue(Node &, double);				//加入double型数组元素
+	Node *AddValue(Node &, const char *); //加入string型数组元素
+	Node *AddValue(Node &, bool);					//加入bool型数组元素
+	Node *AddValue(Node &);								//加入null数组元素
 
-	string EdgeJSONPrint();				//打印json结构,输出字符串
-	bool DeleteEdgeJSON();		//删除整个结构
-	void EdgeJSONParse(string &); //解析字符串
-	void isSucceed(string &, string &);	//与预处理后的字符串进行比对，验证是否解析正确
+	string EdgeJSONPrint();							//打印json结构,输出字符串
+	bool DeleteEdgeJSON();							//删除整个结构
+	void EdgeJSONParse(string &);				//解析字符串
+	void isSucceed(string &, string &); //与预处理后的字符串进行比对，验证是否解析正确
 
-  private:
-	Node * CreateNode(Node &, Relations);		//生成一个节点，以备赋值与挂载到树结构上
+private:
+	Node *CreateNode(Node &); //生成一个节点，以备赋值与挂载到树结构上
 
-	string TraversalPrint(Node *);		//遍历类树结构的每个节点以便生成输出字符串
-	string PrintObject(Node *);			//打印对象
-	string PrintArray(Node *);			//打印数组
-	string PrintKeyvalue(Node *);		//打印有键值
+	string TraversalPrint(Node *); //遍历类树结构的每个节点以便生成输出字符串
+	string PrintObject(Node *);		 //打印对象
+	string PrintArray(Node *);		 //打印数组
+	string PrintKeyvalue(Node *);	//打印有键值
 
-	bool TraversalDelete(Node *);		//遍历json结构进行删除
+	bool TraversalDelete(Node *); //遍历json结构进行删除
 
-	Node *LayerParse(string&);			//分层解析
-	void  Lexing(vector<token *>&, string &);	//词法分析器
-	Node *ParseObject(string);			//解析对象
-	Node *ParseArray(string);			//解析数组
-	Node *ParseInt(string);				//解析int
-	Node *ParseDouble(string);			//解析double
-	Node *ParseString(string);			//解析string
-	Node *ParseBool(string);			//解析bool
-	Node *ParseNull(string);			//解析null
+	Node *LayerParse(string &);								//分层解析
+	void Lexing(vector<token *> &, string &); //词法分析器
+	Node *ParseObject(string);								//解析对象
+	Node *ParseArray(string);									//解析数组
+	Node *ParseInt(string);										//解析int
+	Node *ParseDouble(string);								//解析double
+	Node *ParseString(string);								//解析string
+	Node *ParseBool(string);									//解析bool
+	Node *ParseNull(string);									//解析null
 };
 
-Node &GetNode(Node *, const char *);		//为operator[]共用部分
+Node &GetNode(Node *, const char *); //为operator[]共用部分
 Node &GetNode(Node *, int);
