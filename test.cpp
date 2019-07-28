@@ -29,63 +29,71 @@ using namespace std;
 
 int main()
 {
-	EdgeJSON newjson;
+	EJ newjson;
+	clock_t start, ends;
 
 	//构建测试
-	Node *ob = newjson.AddObject(newjson);
-	newjson.AddKeyvalue(*ob, "name", "金庸");
-	newjson.AddKeyvalue(*ob, "foreign-language name", "Louis Cha");
-	newjson.AddKeyvalue(*ob, "nationality", "中国");
-	newjson.AddKeyvalue(*ob, "nation", "汉族");
+	Node &ob = newjson.AddObject();
+	ob.AddKeyvalue("name", "金庸");
+	ob.AddKeyvalue("foreign-language name", "Louis Cha");
+	ob.AddKeyvalue("nationality", "中国");
+	ob.AddKeyvalue("nation", "汉族");
 
-	Node *ar0 = newjson.AddArray(*ob, "birthplace");
+	Node &ar0 = ob.AddArray("birthplace");
+	ar0.AddObject().AddKeyvalue("province", "浙江");
+	ar0.AddObject().AddKeyvalue("city", "嘉兴");
 
-	newjson.AddKeyvalue(*newjson.AddObject(*ar0), "province", "浙江");
-	newjson.AddKeyvalue(*newjson.AddObject(*ar0), "city", "嘉兴");
+	Node &ar2 = ob.AddArray("profession");
+	ar2.AddValue("作家");
+	ar2.AddValue("政论家");
+	ar2.AddValue("社会活动家");
 
-	Node *ar2 = newjson.AddArray(*ob, "profession");
-
-	newjson.AddValue(*ar2, "作家");
-	newjson.AddValue(*ar2, "政论家");
-	newjson.AddValue(*ar2, "社会活动家");
-
-	Node *ar3 = newjson.AddArray(*ob, "works");
-
-	newjson.AddValue(*ar3, "射雕英雄传");
-	newjson.AddValue(*ar3, "神雕侠侣");
-	newjson.AddValue(*ar3, "倚天屠龙记");
+	Node &ar3 = ob.AddArray("works");
+	ar3.AddValue("射雕英雄传");
+	ar3.AddValue("神雕侠侣");
+	ar3.AddValue("倚天屠龙记");
 
 	//数据接口测试
-	(*ar0)[2]["city"].value_str = "海宁";
-	(*ar3)[2].value_str = "天龙八部";
+	ar0[1]["city"].value_str = "海宁";
+	(ar3)[2].value_str = "天龙八部";
 
 	//打印构建结构
-	cout << newjson.EdgeJSONPrint() << "\n\n";
-	newjson.DeleteEdgeJSON(); //删除json结构
+	cout << "构建json>>>\n"
+		 << newjson.EJPrint() << "\n\n";
+	newjson.DeleteEJ(); //删除json结构
 
-	//解析sample.json测试
+	// //解析sample.json测试
 	fstream test;
-	test.open("./twitter.json", ios::in); //打开sample.json文件
+	test.open("/Users/minweichia/EdgeJSON-2.0/sample.json", ios::in); //打开sample.json文件
 	string s;
 	while (!test.eof())
 	{
 		s += test.get(); //依次读入文件内容
 	}
 	s = s.substr(0, s.size() - 1); //去除字符串末尾的EOF
+	test.close();
 
-	clock_t start = clock();
-	newjson.EdgeJSONParse(s); //调用解析方法
-	clock_t ends = clock();
+	//字符串解析
+	start = clock();
+	newjson.EJParse(&s);
+	ends = clock();
 
-	string result = newjson.EdgeJSONPrint();
-	newjson.isSucceed(s, result);
+	cout << "字符串解析json>>>\n"
+		 << newjson.EJPrint() << endl;
+	cout << "解析耗时: " << (double)(ends - start) / CLOCKS_PER_SEC << endl
+		 << endl;
+	newjson.DeleteEJ();
 
+	//文件解析
+	start = clock();
+	newjson.EJParse("/Users/minweichia/EdgeJSON-2.0/sample.json"); //调用解析方法
+	ends = clock();
+
+	cout << "文件解析json>>>\n"
+		 << newjson.EJPrint() << endl;
 	cout << "解析耗时: " << (double)(ends - start) / CLOCKS_PER_SEC << endl;
+	newjson.DeleteEJ();
 
-#ifdef DEBUG
-	cout << s << endl;
-	cout << result << endl;
-#endif
 	system("pause");
 	char c;
 	cin >> c;

@@ -1,10 +1,10 @@
 /*
-EdgeJSON-许可协议
+EJ-许可协议
 Copyright (c) 2019 Jiaminwei
 
 1.序言:本协议用于管辖用户及商业实体 (以下简称：被许可人) 和软件原作者（以下简称：许可方）之间
   的关系。使用本软件（包括但不限于复制、下载、安装、运行本软件）即视为同意本协议。本协议规定了
-  使用许可方创建和拥有的EdgeJSON (以下简称本软件) 的条款、权利、限制和义务，详情如下:
+  使用许可方创建和拥有的EJ (以下简称本软件) 的条款、权利、限制和义务，详情如下:
 2.许可证授予:许可方特此授予被许可人个人复制、分发、修改以及非商业性使用本软件的权利(商业使用请
   联系软件原作者)。
 3.被许可人义务：
@@ -25,120 +25,138 @@ Copyright (c) 2019 Jiaminwei
 #include <string>
 #include <vector>
 #include <sstream>
+#include <fstream>
+#include <stack>
+
+#define STRMODE 'S'
+#define FILEMODE 'F'
 
 //#define DEBUG
 
 using namespace std;
 
-enum Types
+enum NodeTypes
 {
-	EdgeJSON_object, //7种节点类型
-	EdgeJSON_array,
-	EdgeJSON_int,
-	EdgeJSON_double,
-	EdgeJSON_string,
-	EdgeJSON_bool,
-	EdgeJSON_null,
-
-	EdgeJSON_layer, //为词法分析器另外扩展2种类型
-	EdgeJSON_void
+	EJ_object, //7种节点类型
+	EJ_array,
+	EJ_int,
+	EJ_double,
+	EJ_string,
+	EJ_bool,
+	EJ_null
 };
 
-enum Relations //节点之间的关系
+enum TokenTypes //token类型
 {
-	brother, //兄弟节点关系
-	son			 //父子节点关系
+	EJToken_leftObj,
+	EJToken_rightObj,
+	EJToken_leftArr,
+	EJToken_rightArr,
+	EJToken_colon,
+	EJToken_comma,
+	EJToken_string,
+	EJToken_double,
+	EJToken_int,
+	EJToken_bool,
+	EJToken_null
 };
 
-class Node //节点类
+struct Node //节点类
 {
+	friend class EJ;
+
+private:
+	vector<Node *> children; //指向子节点的指针
+
+	NodeTypes node_type; //节点类型
 public:
-	Node *brother; //指向兄弟节点的指针
-	Node *son;		 //指向子节点的指针
+	string key;		  //节点的键名称(如果有)
+	string value_str; //节点的值类型,共5种
 
-	Types node_type; //节点类型
-	string key;			 //节点的键名称(如果有)
+	union {
+		long long value_int;
+		int value_null;
+		double value_dou;
+		bool value_boo;
+	} value;
 
-	string value_str; //节点的值类型,共4种
-	long long value_int;
-	int value_null;
-	double value_dou;
-	bool value_boo;
-
-	Node(); //构造函数,初始化节点的成员变量
-
-	Node &operator[](const char *); //获取指定节点的引用
-	Node &operator[](int);
-};
-
-class token //词法分析器词素的存储
-{
 public:
-	Types token_type; //词素类型
-	string token_str; //词素内容
-
-	token(); //初始化词素类的成员变量
-};
-
-class EdgeJSON //主要类,使用本库的起点,方法皆封装于此
-{
-public:
-	Node *root; //指向json结构首节点
-
-	EdgeJSON(); //构造函数,初始化root指针
-
+	~Node();
 	Node &operator[](const char *); //获取指定节点的引用
 	Node &operator[](int);
 
 	/*加入节点函数,通过参数列表的不同重载函数.
-	 *Node是被挂载的节点,Relations表明是以什么身份挂载.
+	 *当前节点是被挂载的节点,
 	 *其余参数视加入的节点情况而定.
 	 */
-	Node *AddKeyvalue(Node &, const char *, int);					 //加入值为int型键值对
-	Node *AddKeyvalue(Node &, const char *, double);			 //加入值为double型键值对
-	Node *AddKeyvalue(Node &, const char *, const char *); //加入值为string型键值对
-	Node *AddKeyvalue(Node &, const char *, bool);				 //加入值为bool型键值对
-	Node *AddKeyvalue(Node &, const char *);							 //加入null类型
+	Node &AddKeyvalue(const char *, int);		   //加入值为int型键值对
+	Node &AddKeyvalue(const char *, double);	   //加入值为double型键值对
+	Node &AddKeyvalue(const char *, const char *); //加入值为string型键值对
+	Node &AddKeyvalue(const char *, bool);		   //加入值为bool型键值对
+	Node &AddKeyvalue(const char *);			   //加入null类型
 
-	Node *AddArray(Node &, const char *); //加入数组到对象
-	Node *AddArray(Node &);								//加入数组到数组
-	Node *AddArray(EdgeJSON &);						//加入数组到EdgeJSON
+	Node &AddArray(const char *); //加入数组到对象
+	Node &AddArray();			  //加入数组到数组
 
-	Node *AddObject(Node &, const char *); //加入对象到对象
-	Node *AddObject(Node &);							 //加入对象到数组
-	Node *AddObject(EdgeJSON &);					 //加入对象到EdgeJSON
+	Node &AddObject(const char *); //加入对象到对象
+	Node &AddObject();			   //加入对象到数组
 
-	Node *AddValue(Node &, int);					//加入int型数组元素
-	Node *AddValue(Node &, double);				//加入double型数组元素
-	Node *AddValue(Node &, const char *); //加入string型数组元素
-	Node *AddValue(Node &, bool);					//加入bool型数组元素
-	Node *AddValue(Node &);								//加入null数组元素
-
-	string EdgeJSONPrint();							//打印json结构,输出字符串
-	bool DeleteEdgeJSON();							//删除整个结构
-	void EdgeJSONParse(string &);				//解析字符串
-	void isSucceed(string &, string &); //与预处理后的字符串进行比对，验证是否解析正确
+	Node &AddValue(int);		  //加入int型数组元素
+	Node &AddValue(double);		  //加入double型数组元素
+	Node &AddValue(const char *); //加入string型数组元素
+	Node &AddValue(bool);		  //加入bool型数组元素
+	Node &AddValue();			  //加入null数组元素
 
 private:
-	Node *CreateNode(Node &); //生成一个节点，以备赋值与挂载到树结构上
-
-	string TraversalPrint(Node *); //遍历类树结构的每个节点以便生成输出字符串
-	string PrintObject(Node *);		 //打印对象
-	string PrintArray(Node *);		 //打印数组
-	string PrintKeyvalue(Node *);	//打印有键值
-
-	bool TraversalDelete(Node *); //遍历json结构进行删除
-
-	Node *LayerParse(string &);								//分层解析
-	void Lexing(vector<token *> &, string &); //词法分析器
-	Node *ParseObject(string);								//解析对象
-	Node *ParseArray(string);									//解析数组
-	Node *ParseInt(string);										//解析int
-	Node *ParseDouble(string);								//解析double
-	Node *ParseString(string);								//解析string
-	Node *ParseBool(string);									//解析bool
-	Node *ParseNull(string);									//解析null
+	Node &GetNode(const char *c);	//获得当前节点的子节点中键为c的节点引用
+	Node &GetNode(int i);	//获得当前节点的子节点中第i个子节点的引用
+	inline Node *CreatNode();	//创建新节点并挂载到当前节点
 };
 
-Node &GetNode(Node *, const char *); //为operator[]共用部分
-Node &GetNode(Node *, int);
+struct Token //词法分析器词素的存储
+{
+public:
+	TokenTypes token_type; //词素类型
+	string token_str;	  //词素内容
+};
+
+class EJ //主要类,使用本库的起点,方法皆封装于此
+{
+private:
+	Node *root; //指向json结构首节点
+	char mode;	//解析模式，有字符串和文件解析两种
+	string *inStr;	//字符串解析模式存储字符串指针
+	ifstream *file;	//文件解析模式保存文件指针
+	int index;
+public:
+	EJ(); //构造函数,初始化root指针
+
+	Node &operator[](const char *); //获取指定节点的引用
+	Node &operator[](int);
+
+	Node &AddArray();  //加入数组到EJ
+	Node &AddObject(); //加入对象到EJ
+
+	string EJPrint();			  //打印json结构,输出字符串
+	void DeleteEJ();			  //删除整个结构
+	bool EJParse(string *str);	//解析json字符串
+	bool EJParse(char *filePath); //解析json文件
+
+private:
+	string TraversalPrint(Node *); //遍历类树结构的每个节点以便生成输出字符串
+	string PrintObject(Node *);	//打印对象
+	string PrintArray(Node *);	 //打印数组
+	string PrintKeyvalue(Node *);  //打印键值
+
+	bool parse();	//解析json
+	inline char nextChar();	//获得下一个字符
+	inline Token *nextToken();	//获得下一个token
+
+	// Node *ParseObject(string); //解析对象
+	// Node *ParseArray(string);  //解析数组
+	// Node *ParseInt(string);	//解析int
+	// Node *ParseDouble(string); //解析double
+	// Node *ParseString(string); //解析string
+	// Node *ParseBool(string);   //解析bool
+	// Node *ParseNull(string);   //解析null
+};

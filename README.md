@@ -1,4 +1,4 @@
-#  EdgeJSON
+#  EJ
 
 这是一个用C++编写的json类库,用于构建以及解析json文件,并提供简洁的API用来访问数据.
 
@@ -6,9 +6,7 @@
 
 * [许可证](#许可证)
 * [使用](#使用)
-  * [EdgeJSON介绍](#EdgeJSON介绍)
-  * [数据结构](#数据结构)
-  * [接口类](#接口类)
+  * [EJ介绍](#EJ介绍)
   * [举例](#举例)
     * [构建](#构建)
     * [解析](#解析)
@@ -18,13 +16,13 @@
   * [注意事项](#注意事项)
 
 ## 许可证
->EdgeJSON-许可协议
+>EJ-许可协议
 >
 >Copyright (c) 2018 Jiaminwei
 >
 >1.序言:本协议用于管辖用户及商业实体 (以下简称：被许可人) 和软件原作者（以下简称：许可方）之间
   的关系。使用本软件（包括但不限于复制、下载、安装、运行本软件）即视为同意本协议。本协议规定了
-  使用许可方创建和拥有的EdgeJSON (以下简称本软件) 的条款、权利、限制和义务，详情如下:
+  使用许可方创建和拥有的EJ (以下简称本软件) 的条款、权利、限制和义务，详情如下:
 >
 >2.许可证授予:许可方特此授予被许可人个人复制、分发、修改以及非商业性使用本软件的权利(商业使用请
   联系软件原作者)。
@@ -48,106 +46,9 @@
   用即代表同意修改后的协议条款），并对本协议未尽事宜保留所有权利。
 ## 使用
 
-### EdgeJSON介绍
+### EJ介绍
 
-EdgeJSON是一个轻量级的json类库(一个头文件和一个源码文件,编译后即可使用),有助于程序员快速构建或解析json文件.EdgeJSON没有花里胡哨的功能,仅提供构建和解析以及访问和打印等核心功能,依据二八原则,这些代码足以应对80%的使用场景,后续将视情况酌情添加新的功能.作者会持续提供代码的优化与维护.
-
-
-
-### 数据结构
-
-```
-enum Types			
-{
-	EdgeJSON_object,		//7种节点类型
-	EdgeJSON_array,
-	EdgeJSON_int,
-	EdgeJSON_double,
-	EdgeJSON_string,
-	EdgeJSON_bool,
-	EdgeJSON_null,
-
-	EdgeJSON_layer,		//为词法分析器另外扩展2种类型
-	EdgeJSON_void
-};		
-
-enum Relations		//节点之间的关系
-{
-	brother,		//兄弟节点关系
-	son				//父子节点关系
-};
-
-class Node			//节点类
-{
-  public:
-	Node *brother;		//指向兄弟节点的指针
-	Node *son;			//指向子节点的指针
-
-	Types node_type;	//节点类型
-	string key;			//节点的键名称(如果有)
-	
-	string value_str;	//节点的值类型,共5种
-	int value_int;
-	int value_null;
-	double value_dou;
-	bool value_boo;
-
-	Node();				//构造函数,初始化节点的成员变量
-
-	Node &operator[](const char *);		//获取指定节点的引用
-	Node &operator[](int);
-};
-```
-
-此库的数据结构是类似于链表和树的混合体,具体情况已在代码中注释.
-
-
-
-### 接口类
-
-```
-class EdgeJSON			//主要类,使用本库的起点,方法皆封装于此
-{
-  public:
-	Node *root;			//指向json结构首节点
-	
-	EdgeJSON();			//构造函数,初始化root指针
-
-	Node &operator[](const char *);		//获取指定节点的引用
-	Node &operator[](int);
-
-	/*加入节点函数,通过参数列表的不同重载函数.
-	 *Node是被挂载的节点,Relations表明是以什么身份挂载.
-	 *其余参数视加入的节点情况而定.
-	 */
-	Node *AddKeyvalue(Node &, Relations, const char*, int);			//加入值为int型键值对
-	Node *AddKeyvalue(Node &, Relations, const char*, double);		//加入值为double型键值对
-	Node *AddKeyvalue(Node &, Relations, const char*, const char *);	//加入值为string型键值对
-	Node *AddKeyvalue(Node &, Relations, const char*, bool);			//加入值为bool型键值对
-	Node *AddKeyvalue(Node &, Relations, const char *);		//加入null类型
-
-	Node *AddArray(Node &, Relations, const char *);	//加入数组到对象
-	Node *AddArray(Node &, Relations);				//加入数组到数组
-	Node *AddArray(EdgeJSON &);			//加入数组到EdgeJSON
-
-	Node *AddObject(Node &, Relations, const char *); //加入对象到对象
-	Node *AddObject(Node &, Relations);				 //加入对象到数组
-	Node *AddObject(EdgeJSON &);			 //加入对象到EdgeJSON
-
-	Node *AddValue(Node &, Relations, int);			//加入int型数组元素
-	Node *AddValue(Node &, Relations, double);		//加入double型数组元素
-	Node *AddValue(Node &, Relations, const char *);	//加入string型数组元素
-	Node *AddValue(Node &, Relations, bool);			//加入bool型数组元素
-	Node *AddValue(Node &, Relations);					//加入null数组元素
-
-	string EdgeJSONPrint();				//打印json结构,输出字符串
-	bool DeleteEdgeJSON();		//删除整个结构
-	void EdgeJSONParse(string);		//解析字符串
-};
-```
-
-所有的方法都封装于此,所有的操作都要从实例化一个EdgeJSON对象开始.
-
+EJ是一个轻量级的json类库(一个头文件和一个源码文件,编译后即可使用),有助于程序员快速构建或解析json文件.EJ没有花里胡哨的功能,仅提供构建和解析以及访问和打印等核心功能,依据二八原则,这些代码足以应对80%的使用场景,后续将视情况酌情添加新的功能.作者会持续提供代码的优化与维护.
 
 
 ### 举例
@@ -174,70 +75,76 @@ class EdgeJSON			//主要类,使用本库的起点,方法皆封装于此
 #### 构建
 
 ```
-EdgeJSON newjson;
-newjson.AddObject(newjson);
-newjson.AddKeyvalue(newjson[1], son, "name", "金庸");
-newjson.AddKeyvalue(newjson["name"], brother, "foreign-language name", "Louis Cha");
-newjson.AddKeyvalue(newjson["foreign-language name"], brother, "nationality", "中国");
-newjson.AddKeyvalue(newjson["nationality"], brother, "nation", "汉族");
-newjson.AddArray(newjson["nation"], brother, "birthplace");
-newjson.AddObject(newjson["birthplace"], son);
-newjson.AddObject(newjson["birthplace"][1], brother);
-newjson.AddKeyvalue(newjson["birthplace"][1], son, "province", "浙江");
-newjson.AddKeyvalue(newjson["birthplace"][2], son, "city", "嘉兴");
-newjson.AddArray(newjson["birthplace"], brother, "profession");
-newjson.AddValue(newjson["profession"], son, "作家");
-newjson.AddValue(newjson["profession"][1], brother, "政论家");
-newjson.AddValue(newjson["profession"][2], brother, "社会活动家");
-newjson.AddArray(newjson["profession"], brother, "works");
-newjson.AddValue(newjson["works"], son, "射雕英雄传");
-newjson.AddValue(newjson["works"][1], brother, "神雕侠侣");
-newjson.AddValue(newjson["works"][2], brother, "倚天屠龙记");
+	EJ newjson;
+	clock_t start, ends;
+
+	//构建测试
+	Node &ob = newjson.AddObject();
+	ob.AddKeyvalue("name", "金庸");
+	ob.AddKeyvalue("foreign-language name", "Louis Cha");
+	ob.AddKeyvalue("nationality", "中国");
+	ob.AddKeyvalue("nation", "汉族");
+
+	Node &ar0 = ob.AddArray("birthplace");
+	ar0.AddObject().AddKeyvalue("province", "浙江");
+	ar0.AddObject().AddKeyvalue("city", "嘉兴");
+
+	Node &ar2 = ob.AddArray("profession");
+	ar2.AddValue("作家");
+	ar2.AddValue("政论家");
+	ar2.AddValue("社会活动家");
+
+	Node &ar3 = ob.AddArray("works");
+	ar3.AddValue("射雕英雄传");
+	ar3.AddValue("神雕侠侣");
+	ar3.AddValue("倚天屠龙记");
 ```
 
-EdgeJSON对象加[]用来返回json结构首节点的子节点的引用.
+EJ对象加[]用来返回json结构首节点的子节点的引用.
 
-Node对象加[]用来返回当前节点子节点的引用(子节点的兄弟节点也是当前节点的子节点).
+Node对象加[]用来返回当前节点子节点的引用.
 
-[]中的字符串用于访问带键名称的子节点,数字用于访问无键名称的子节点(从1开始).
+[]中的字符串用于访问带键名称的子节点,数字用于访问无键名称的子节点(从0开始).
 
 
 
 #### 解析
 
 ```
-newjson.EdgeJSONParse(s);			//调用解析方法
+newjson.EJParse(s);			//调用字符串解析方法
+newjson.EJParse(filePath);	//调用文件解析方法
 ```
 
-直接用EdgeJSON对象调用EdgeJSONParse方法,传入要解析的字符串,解析后的json结构挂载在EdgeJSON对象的root成员变量上,可通过EdgeJSON对象访问整个json结构.
+直接用EJ对象调用EJParse方法,传入要解析的字符串或文件,解析后的json结构挂载在EJ对象的root成员变量上,可通过EJ对象访问整个json结构.
 
 
 
 #### 打印
 
 ```
-string EdgeJSONPrint();				//打印json结构,输出字符串
+string EJPrint();				//打印json结构,输出字符串
 ```
 
-用EdgeJSON对象调用EdgeJSONPrint方法,将打印对象下所挂载的json结构,返回字符串.
+用EJ对象调用EJPrint方法,将打印对象下所挂载的json结构,返回字符串.
 
 
 
 #### 删除
 
 ```
-bool DeleteEdgeJSON();		//删除整个结构
+void DeleteEJ();		//删除整个结构
 ```
 
-用EdgeJSON对象调用DeleteEdgeJSON方法,将删除对象下所挂载的json结构,返回bool值,标示成功或失败.
+用EJ对象调用DeleteEJ方法,将删除对象下所挂载的json结构.
 
 
 
 #### 访问数据
 
 ```
-newjson["birthplace"][2]["city"].value_str = "海宁";
-newjson["works"][2].value_str = "天龙八部";
+//数据接口测试
+ar0[1]["city"].value_str = "海宁";
+ar3[2].value_str = "天龙八部";
 ```
 
 获得需要操作的节点的引用后,访问成员变量,可进行读取或赋值操作.
